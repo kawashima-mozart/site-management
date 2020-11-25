@@ -23,8 +23,8 @@ Things you may want to cover:
 
   ### association
     has_many comments
-    has_many business
-    has_many schedules
+    has_many user_business
+    has_many user_schedules
 
   ## Commentsテーブル
   | Column   | Type       | Options                        |
@@ -92,8 +92,21 @@ Things you may want to cover:
 
   ### associate
     belongs_to site
-    belongs_to user
+    has_many user_businesses
     has_many schedules
+
+  ## user_businessesテーブル
+
+  | Column   | Type       | Options                        |
+  | -------- | ---------- | ------------------------------ |
+  | person   | references | null: false, foreign_key: true |
+  | business | references | null: false, foreign_key: true |
+
+
+  ### associate
+    belongs_to person
+    belongs_to business
+
 
   ## schedulesテーブル
 
@@ -108,7 +121,20 @@ Things you may want to cover:
 
   ### associate
     belongs_to business
+    has_many user_schedules
+
+    ## user_schedulesテーブル
+
+  | Column     | Type       | Options                        |
+  | ---------- | ---------- | ------------------------------ |
+  | user       | references | null: false, foreign_key: true |
+  | schedule   | references | null: false, foreign_key: true |
+
+
+  ### associate
+    belongs_to schedule
     belongs_to user
+
 
 * Database initialization
 

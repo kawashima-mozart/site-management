@@ -1,0 +1,19 @@
+<h2>新規登録</h2>
+
+<%= form_with model: @site, local: true do |f| %>
+  <%= render 'shared/error_messages', model: f.object %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :customer %><br />
+    <%= f.text_field :customer, autocomplete: "customer" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "登録" %>
+  </div>
+<% end %>

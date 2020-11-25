@@ -1,5 +1,8 @@
 ja:
- activerecord:
-   attributes:
-     user:
-       name: 名前
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+      site:
+        name: 所在地番
+        customer: 顧客名

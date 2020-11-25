@@ -1,0 +1,29 @@
+<div class="field">
+    <%= f.label '測量担当' %><br />
+    <select name = "site[survey_id][]">
+      <option value = ''>---</option>
+      <% User.all.each do |user| %>
+        <option><%= user.name %></option>
+      <% end %>
+      </select>
+  </div>
+
+  <div class="field">
+    <%= f.label '開発担当' %><br />
+    <select name = "site[development_id][]">
+      <option value = ''>---</option>
+      <% User.all.each do |user| %>
+        <option><%= user.name %></option>
+      <% end %>
+      </select>
+  </div>
+
+  <div class="field">
+    <%= f.label '設計担当'%><br />
+    <select name = "site[design_id][]">
+      <option value = ''>---</option>
+      <% User.all.each do |user| %>
+        <option><%= user.name %></option>
+      <% end %>
+      </select>
+  </div>

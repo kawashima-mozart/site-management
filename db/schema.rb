@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_080505) do
+ActiveRecord::Schema.define(version: 2020_11_25_025425) do
+
+  create_table "sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "customer", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "survey_id", null: false
+    t.bigint "development_id", null: false
+    t.bigint "design_id", null: false
+    t.bigint "site_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["design_id"], name: "index_user_sites_on_design_id"
+    t.index ["development_id"], name: "index_user_sites_on_development_id"
+    t.index ["site_id"], name: "index_user_sites_on_site_id"
+    t.index ["survey_id"], name: "index_user_sites_on_survey_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -25,4 +45,5 @@ ActiveRecord::Schema.define(version: 2020_11_24_080505) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "user_sites", "sites"
 end

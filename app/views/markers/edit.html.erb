@@ -3,10 +3,10 @@
 <div class='marker field'>
   <%= form_with(model: @marker,url: site_marker_path(@marker.site,@marker), local: true) do |f| %>
 
-    <%# <%= render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object%>
 
     <div class="actions">
-      <%= f.submit "登録" %>
+      <%= f.submit "更新" %>
     </div>
 
     <div class="field">

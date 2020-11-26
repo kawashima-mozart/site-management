@@ -10,8 +10,11 @@ class MarkersController < ApplicationController
   end
 
   def update
-    @marker.update(marker_params)
-    redirect_to site_path(@marker.site.id)
+    if @marker.update(marker_params)
+      redirect_to site_path(@marker.site.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

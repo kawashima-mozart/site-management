@@ -6,3 +6,9 @@ ja:
       site:
         name: 所在地番
         customer: 顧客名
+      marker:
+        name: 点番
+        name_cad: 点番（CAD)
+        exist: 既設or新設
+        type: 境界種類
+        image: 写真

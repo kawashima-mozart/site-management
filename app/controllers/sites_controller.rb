@@ -1,4 +1,8 @@
 class SitesController < ApplicationController
+  def index
+    @sites = Site.all
+  end
+  
   def new
     @site = Site.new
   end
@@ -10,6 +14,11 @@ class SitesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @site = Site.find(params[:id])
+    @marker = Marker.new
   end
 
   private

@@ -1,0 +1,47 @@
+<p><% @site.name %></p>
+
+<%= link_to '業務', '#' %>
+
+<p>境界標</p>
+<div class='marker field'>
+  <%= form_with(model: [@site,@marker], local: true) do |f| %>
+
+    <%# <%= render 'shared/error_messages', model: f.object %>
+
+    <div class="actions">
+      <%= f.submit "登録" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :name_cad %><br />
+      <%= f.text_field :name_cad, autocomplete: "customer" %>
+    </div>
+
+    <div class="field">
+    <%= f.label :exist %><br />
+      <%= f.collection_select(:exist_id, Exist.all, :id, :name) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :type %><br />
+      <%= f.collection_select(:type_id, Type.all, :id, :name) %>
+    </div>
+
+    <div slass='fields'>
+    <%= f.label :image %><br />
+      <%= f.file_field :image, name: 'marker[image]', id: 'marker_image' %>
+    </div>
+  <% end %>
+</div>
+
+<%# <div class='sample_image'> %>
+  <%# <% @marker.images.each do |image| %> %>
+    <%# <%= image_tag image, class: 'images' %> %>
+  <%# <% end %> %>
+<%# </div> %>
+

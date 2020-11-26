@@ -59,7 +59,7 @@
         <div class='marker images'>
           <div class='marker image'>
             <% marker.images.each do |image| %>
-              <%= image_tag image %>
+              <%= image_tag image.variant(resize: '200x200') %>
             <% end %>
           </div>
         </div>

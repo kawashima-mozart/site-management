@@ -2,7 +2,7 @@ class Marker < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :name_cad
-    validates :type_id, numericality: {other_than:0}
+    validates :type_id, numericality: {other_than:0, message: 'を選択してください' }
     validates :exist_id
   end
   

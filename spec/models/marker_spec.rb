@@ -8,20 +8,33 @@ RSpec.describe Marker, type: :model do
   describe '境界標登録' do
     context '保存できるとき' do
       it '正しい値が入力されているとき' do
-        expect(@site).to be_valid
+        expect(@marker).to be_valid
+      end
+      it 'exist_idが０でも保存できる' do
+        @marker.exist_id = 0
+        expect(@marker).to be_valid
+      end
+      it 'imageが空でも保存できる' do
+        @marker.images = nil
+        expect(@marker).to be_valid
       end
     end
 
     context '保存できないとき' do
-      it '所在地番が空欄のとき' do
-        @site.name = nil
-        @site.valid?
-        expect(@site.errors.full_messages).to include('所在地番を入力してください')      
+      it '点番が空欄のとき' do
+        @marker.name = nil
+        @marker.valid?
+        expect(@marker.errors.full_messages).to include('点番を入力してください')      
       end
-      it '顧客名が空欄のとき' do
-        @site.customer = nil
-        @site.valid?
-        expect(@site.errors.full_messages).to include('顧客名を入力してください')      
+      it '点番（CAD）が空欄のとき' do
+        @marker.name_cad = nil
+        @marker.valid?
+        expect(@marker.errors.full_messages).to include('点番（CAD)を入力してください')      
+      end
+      it '境界種類が０のとき' do
+        @marker.type_id = 0
+        @marker.valid?
+        expect(@marker.errors.full_messages).to include('境界種類を選択してください')      
       end
     end
   end

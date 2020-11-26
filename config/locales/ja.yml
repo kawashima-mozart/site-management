@@ -11,5 +11,6 @@ ja:
         name_cad: 点番（CAD)
         exist: 既設or新設
         type: 境界種類
+        type_id: 境界種類
         image: 写真
         images: 写真

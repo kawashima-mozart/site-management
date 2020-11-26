@@ -6,6 +6,14 @@ class MarkersController < ApplicationController
     redirect_to site_path(@marker.site.id)
   end
 
+  def edit
+  end
+
+  def update
+    @marker.update(marker_params)
+    redirect_to site_path(@marker.site.id)
+  end
+
   def destroy
     @marker.destroy
     redirect_to site_path(@marker.site.id)

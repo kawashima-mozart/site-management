@@ -3,5 +3,5 @@ class Site < ApplicationRecord
     validates :name
     validates :customer
   end
-  has_many :markers
+  has_many :markers, dependent: :destroy
 end

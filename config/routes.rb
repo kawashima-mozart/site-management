@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: 'sites#index'
   resources :users, only: :show
   resources :sites, only: [:index, :new, :create, :show] do
-   resources :markers, only: [:create]
+   resources :markers, only: [:create, :destroy]
   end
 end

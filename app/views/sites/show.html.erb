@@ -33,15 +33,37 @@
     </div>
 
     <div slass='fields'>
-    <%= f.label :image %><br />
-      <%= f.file_field :image, name: 'marker[image]', id: 'marker_image' %>
+    <%= f.label :images %><br />
+      <%= f.file_field :images, name: 'marker[images][]', id: 'marker_images' %>
     </div>
   <% end %>
 </div>
 
-<%# <div class='sample_image'> %>
-  <%# <% @marker.images.each do |image| %> %>
-    <%# <%= image_tag image, class: 'images' %> %>
-  <%# <% end %> %>
-<%# </div> %>
+<div class='sample_image'>
+  <% @marker.images.each do |image| %>
+    <%= image_tag image %>
+  <% end %>
+</div>
 
+<div class='marker lists'>
+  <% if @markers.present? %>
+    <% @markers.each do |marker| %>
+      <div class='marker list'>
+        <div class='marker name'>
+          <p>点番    <%= marker.name %></p>
+          <p>CAD点番   <%= marker.name_cad %></p>
+        </div>
+        <div class='marker type'>
+          <%= marker.exist.name + marker.type.name %>
+        </div>
+        <div class='marker images'>
+          <div class='marker image'>
+            <% marker.images.each do |image| %>
+              <%= image_tag image %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

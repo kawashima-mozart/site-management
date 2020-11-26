@@ -19,6 +19,7 @@ class SitesController < ApplicationController
   def show
     @site = Site.find(params[:id])
     @marker = Marker.new
+    @markers = @site.markers
   end
 
   private

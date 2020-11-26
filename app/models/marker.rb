@@ -7,7 +7,7 @@ class Marker < ApplicationRecord
   end
   
   belongs_to :site
-  has_one_attached :image
+  has_many_attached :images
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :type
   belongs_to :exist

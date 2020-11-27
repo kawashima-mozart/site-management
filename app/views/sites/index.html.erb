@@ -3,10 +3,13 @@
 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
 <%= link_to '新規現場登録', new_site_path %>
 
-<div>
+<div class='site lists'>
   <% @sites.each do |site| %>
-    <%= link_to site.name, site_path(site.id) %>
-    <%= site.customer%>
-    <%= link_to "編集","#"%>
+    <div class='site list'>
+      <%= link_to site.name, site_path(site.id) %>
+      <%= site.customer%>
+      <%= link_to "編集", edit_site_path(site.id) %>
+      <%= link_to "削除", site_path(site.id), method: :delete%>
+    </div>
   <% end %>
 </div>

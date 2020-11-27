@@ -1,4 +1,5 @@
 class SitesController < ApplicationController
+  before_action :set_site, only: [:edit, :update, :show, :destroy]
   def index
     @sites = Site.all
   end
@@ -16,11 +17,26 @@ class SitesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @site.update(site_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   def show
-    @site = Site.find(params[:id])
     @marker = Marker.new
     @markers = @site.markers.order(created_at: :asc)
     @neighbors = @site.neighbors.order(created_at: :asc)
+  end
+
+  def destroy
+    @site.destroy
+    redirect_to root_path
   end
 
   private
@@ -29,4 +45,7 @@ class SitesController < ApplicationController
     params.require(:site).permit(:name, :customer)
   end
 
+  def set_site
+    @site = Site.find(params[:id])
+  end
 end

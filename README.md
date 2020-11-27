@@ -72,6 +72,8 @@ Things you may want to cover:
   | phone_number | string     |                                |
   | witness      | boolean    |                                |
   | witness_day  | date       |                                |
+  | imprint      | boolean    |                                |
+  | imprint_day  | date       |                                |
   | status_id    | integer    |                                |
   | memo         | text       |                                |
   | site         | references | null: false, foreign_key: true |

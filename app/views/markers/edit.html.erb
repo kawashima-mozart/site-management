@@ -1,7 +1,7 @@
 
 <p>境界標</p>
 <div class='marker field'>
-  <%= form_with(model: @marker,url: site_marker_path(@marker.site,@marker), local: true) do |f| %>
+  <%= form_with(model: @marker, url: site_marker_path(@marker.site,@marker), local: true) do |f| %>
 
     <%= render 'shared/error_messages', model: f.object%>
 
@@ -11,12 +11,12 @@
 
     <div class="field">
       <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      <%= f.text_field :name, autofocus: true %>
     </div>
 
     <div class="field">
       <%= f.label :name_cad %><br />
-      <%= f.text_field :name_cad, autocomplete: "customer" %>
+      <%= f.text_field :name_cad %>
     </div>
 
     <div class="field">

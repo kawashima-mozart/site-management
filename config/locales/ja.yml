@@ -14,3 +14,16 @@ ja:
         type_id: 境界種類
         image: 写真
         images: 写真
+      neighbor:
+        lot_number: 地番
+        name: 名前
+        address: 登記簿住所
+        address_now: 現住所
+        phone_number: 電話番号
+        witness: 立会
+        witness_day: 立会日
+        imprint: 押印
+        imprint_day: 押印日
+        status_id: 状況
+        status: 状況
+        memo: メモ

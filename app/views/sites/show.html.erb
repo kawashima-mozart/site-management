@@ -1,6 +1,7 @@
 <p><% @site.name %></p>
 
 <%= link_to '業務', '#' %>
+<%= link_to '近隣情報' ,new_site_neighbor_path(params[:id]) %>
 
 <p>境界標</p>
 <div class='marker field'>
@@ -12,12 +13,12 @@
 
     <div class="field">
       <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      <%= f.text_field :name, autofocus: true %>
     </div>
 
     <div class="field">
       <%= f.label :name_cad %><br />
-      <%= f.text_field :name_cad, autocomplete: "customer" %>
+      <%= f.text_field :name_cad %>
     </div>
 
     <div class="field">
@@ -63,6 +64,45 @@
         </div>
         <%= link_to '編集', edit_site_marker_path(marker.site,marker) %>
         <%= link_to '削除', site_marker_path(marker.site,marker), method: :delete %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class='neighbor lists'>
+  <% if @neighbors.present? %>
+    <% @neighbors.each do |neighbor| %>
+      <div class='neighbor list'>
+        <div class='neighbor lot_number'>
+          <p>地番   <%= neighbor.lot_number %></p>
+        </div>
+        <div class='neighbor name'>
+          <p>名前   <%= neighbor.name %></p>
+        </div>
+        <div class='neighbor address'>
+          <p>登記簿住所
+          <%= neighbor.address  %></p>
+          <% if neighbor.address_now.present?%>
+            <p>現住所
+              <%= neighbor.address_now %></p>
+          <% end %>
+        </div>
+        <% if neighbor.phone_number.present?%>
+          <div class='neighbor phone_number'>
+            <p>電話番号   <%= neighbor.phone_number %></p>
+          </div>
+        <% end %>
+        <div class='neighbor status'>
+          <p><%= neighbor.status.name %></p>
+        </div>
+        <div class='witness'>
+          <% neighbor.witness%>
+        </div>
+        <div>
+            <% neighbor.imprint%>
+        </div>
+        <%= link_to '編集', edit_site_neighbor_path(neighbor.site,neighbor) %>
+        <%= link_to '削除', site_neighbor_path(neighbor.site,neighbor), method: :delete %>
       </div>
     <% end %>
   <% end %>

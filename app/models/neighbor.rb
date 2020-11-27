@@ -3,7 +3,7 @@ class Neighbor < ApplicationRecord
     validates :lot_number
     validates :name
     validates :address
-    validates :status_id, , numericality: {other_than:0, message: 'を選択してください' }
+    validates :status_id
   end
   belongs_to :site
   extend ActiveHash::Associations::ActiveRecordExtensions

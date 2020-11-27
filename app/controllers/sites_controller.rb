@@ -20,6 +20,7 @@ class SitesController < ApplicationController
     @site = Site.find(params[:id])
     @marker = Marker.new
     @markers = @site.markers.order(created_at: :asc)
+    @neighbors = @site.neighbors.order(created_at: :asc)
   end
 
   private

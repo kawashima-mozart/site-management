@@ -1,0 +1,99 @@
+<p>業務登録</p>
+<div class='marker field'>
+  <%= form_with model: @user_business_schedule ,url: site_business_schedules_path, local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
+    <div class="field">
+      <%= f.label :business_content_id %><br />
+      <%= f.collection_select(:business_content_id, BusinessContent.all, :id, :name) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :survey_id%><br />
+      <%= f.collection_select(:survery_id, Survey.all, :id, :name) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :development_id %><br />
+      <%= f.collection_select(:development_id, Development.all, :id, :name) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :order_day %><br />
+      <%= raw sprintf(
+                    f.date_field(
+                      :order_day,
+                      class:'select-day',
+                      id:"witness-date")
+                    ) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :delivery_day %><br />
+      <%= raw sprintf(
+                    f.date_field(
+                      :delivery_day,
+                      class:'select-day',
+                      id:"witness-date")
+                    ) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :user_id %><br />
+      <select name = "user_business_schedule[user_id]">
+        <option value = ''>---</option>
+        <% User.all.each do |user| %>
+          <option value=<%= user.id%>><%= user.name %></option>
+        <% end %>
+        </select>
+    </div>
+
+   <div class="field">
+      <%= f.label :servey_day %><br />
+      <%= raw sprintf(
+                    f.date_field(
+                      :start,
+                      class:'select-day',
+                      id:"witness-date")
+                    ) %>
+      <input name = 'user_business_schedule[name]' type='hidden'  value='測量日'>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "登録" %>
+    </div>
+
+    <%=params%>
+    <%# <% case  %>
+      <%# <% when%>
+        <%# <% render '' %>
+      <%# <% when%>
+        <%# <% render '' %>
+      <%# <% when%>
+        <%# <%= render '' %>
+      <%# <% when%>
+        <%# <%= render '' %>
+    <%# <% end %>
+
+    <%# 登記用%>
+    <%# <% case %>
+      <%# <% when%>
+        <%# <%= render '' %>
+      <%# <% when%>
+        <%# <%= render '' %>
+      <%# <% when%>
+        <%# <%= render '' %>
+    <%# <% end%>
+
+    <%# 開発用 %>
+    <%# <% case %>
+      <%# <% when%>
+        <%# <%= render '' %>
+      <%# <% when%>
+        <%# <%= render '' %>
+    <%# <% end%>
+
+    
+  <% end %>
+</div>

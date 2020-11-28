@@ -8,7 +8,7 @@ class NeighborsController < ApplicationController
   def create
     @neighbor = Neighbor.new(neighbor_params)
     if @neighbor.save
-      redirect_to site_path(@neighbor.site.id)
+      redirect_to site_path(params[:site_id])
     else
       render :new
     end
@@ -19,7 +19,7 @@ class NeighborsController < ApplicationController
 
   def update
     if @neighbor.update(neighbor_params)
-      redirect_to site_path(@neighbor.site.id)
+      redirect_to site_path(params[:site_id])
     else
       render :edit
     end
@@ -28,7 +28,7 @@ class NeighborsController < ApplicationController
 
   def destroy
     @neighbor.destroy
-    redirect_to site_path(@neighbor.site.id)
+    redirect_to site_path(params[:site_id])
   end
 
   private

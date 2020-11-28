@@ -9,6 +9,12 @@ class UserBusinessSchedule
   
   validates :order_day,presence: true
   validates :business_content_id, numericality: {other_than:0, message: 'を選択してください' }
+  validates :survey_id, numericality: {other_than:0, message: 'を選択してください' }, if: :was_exists?
+  validates :user_id,numericality: {other_than:0, message: 'を選択してください' }
+
+  def was_exists?
+    self.development_id == '0'
+  end
 
   def save
     business = Business.create(business_content_id: business_content_id, survey_id: survey_id, development_id: development_id, order_day: order_day, delivery_day: delivery_day, site_id: site_id)

@@ -41,16 +41,11 @@
 
     <div class="field">
       <%= raw sprintf(
-                    f.date_select(
+                    f.date_field(
                       :witness_day,
                       class:'select-day',
-                      id:"witness-date",
-                      use_month_numbers: true,
-                      prompt: '--',
-                      start_year: Time.now.year,
-                      end_year:1990,
-                      date_separator: '%s'),
-                    "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+                      id:"witness-date")
+                    ) %>
     </div>
 
     <div class="field">
@@ -60,16 +55,11 @@
 
     <div class="field">
       <%= raw sprintf(
-                    f.date_select(
+                    f.date_field(
                       :imprint_day,
                       class:'select-day',
-                      id:"witness-date",
-                      use_month_numbers: true,
-                      prompt: '--',
-                      start_year: Time.now.year,
-                      end_year:1990,
-                      date_separator: '%s'),
-                    "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+                      id:"witness-date")
+                    ) %>
     </div>
 
    

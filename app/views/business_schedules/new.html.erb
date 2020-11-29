@@ -41,12 +41,7 @@
 
     <div class="field">
       <%= f.label :user_id %><br />
-      <select name = "user_business_schedule[user_id]">
-        <option value = ''>---</option>
-        <% User.all.each do |user| %>
-          <option value=<%= user.id%>><%= user.name %></option>
-        <% end %>
-        </select>
+      <%= f.collection_select :user_id, User.all, :id, :name, prompt: true %>
     </div>
 
    <div class="field">

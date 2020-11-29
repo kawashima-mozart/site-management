@@ -1,6 +1,6 @@
-<p>業務登録</p>
+<p>業務詳細</p>
 <div class='marker field'>
-  <%= form_with model: @user_business_schedule ,url: site_business_schedules_path, local: true do |f| %>
+  <%= form_with model: @business ,url: site_business_path(@business.site,@business), local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
 
@@ -44,51 +44,26 @@
       <%= f.collection_select :user_id, User.all, :id, :name, prompt: true %>
     </div>
 
-   <div class="field">
-      <%= f.label :servey_day %><br />
-      <%= raw sprintf(
-                    f.date_field(
-                      :start,
-                      class:'select-day',
-                      id:"witness-date")
-                    ) %>
-      <input name = 'user_business_schedule[name]' type='hidden'  value='測量日'>
-    </div>
-
-    <div class="actions">
+     <div class="actions">
       <%= f.submit "登録" %>
     </div>
-
-    <%=params%>
-    <%# <% case  %>
-      <%# <% when%>
-        <%# <% render '' %>
-      <%# <% when%>
-        <%# <% render '' %>
-      <%# <% when%>
-        <%# <%= render '' %>
-      <%# <% when%>
-        <%# <%= render '' %>
-    <%# <% end %>
-
-    <%# 登記用%>
-    <%# <% case %>
-      <%# <% when%>
-        <%# <%= render '' %>
-      <%# <% when%>
-        <%# <%= render '' %>
-      <%# <% when%>
-        <%# <%= render '' %>
-    <%# <% end%>
-
-    <%# 開発用 %>
-    <%# <% case %>
-      <%# <% when%>
-        <%# <%= render '' %>
-      <%# <% when%>
-        <%# <%= render '' %>
-    <%# <% end%>
-
-    
   <% end %>
+</div>
+
+<div class="container">
+  <%= form_with(model: [@business, @comment],url: site_business_comments_path(@business.site,@business), local: true) do |form| %>
+    <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+    <%= form.submit "SEND" %>
+  <% end %>
+  <div class="comments">
+    <h4>＜コメント一覧＞</h4>
+    <% if @comments %>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= comment.user.name %>：</strong>
+          <%= comment.text %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
 </div>

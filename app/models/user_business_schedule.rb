@@ -9,11 +9,16 @@ class UserBusinessSchedule
   
   validates :order_day,presence: true
   validates :business_content_id, numericality: {other_than:0, message: 'を選択してください' }
-  validates :survey_id, numericality: {other_than:0, message: 'を選択してください' }, if: :was_exists?
+  validates :survey_id, numericality: {other_than:0, message: 'を選択してください' }, if: :content_s
+  validates :development_id, numericality: {other_than:0, message: 'を選択してください' }, if: :content_d
   validates :user_id,numericality: {other_than:0, message: 'を選択してください' }
 
-  def was_exists?
-    self.development_id == '0'
+  def content_s
+    self.business_content_id == '1'
+  end
+
+  def content_d
+    self.business_content_id == '2'
   end
 
   def save

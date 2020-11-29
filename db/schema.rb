@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_090341) do
+ActiveRecord::Schema.define(version: 2020_11_29_085541) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -39,10 +39,20 @@ ActiveRecord::Schema.define(version: 2020_11_27_090341) do
     t.integer "development_id"
     t.date "order_day", null: false
     t.boolean "delivery_day"
-    t.bigint "site_id"
+    t.bigint "site_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["site_id"], name: "index_businesses_on_site_id"
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text", null: false
+    t.bigint "user_id", null: false
+    t.bigint "business_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_comments_on_business_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "markers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -123,6 +133,9 @@ ActiveRecord::Schema.define(version: 2020_11_27_090341) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "businesses", "sites"
+  add_foreign_key "comments", "businesses"
+  add_foreign_key "comments", "users"
   add_foreign_key "markers", "sites"
   add_foreign_key "neighbors", "sites"
   add_foreign_key "schedules", "businesses"

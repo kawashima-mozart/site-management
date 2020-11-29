@@ -15,7 +15,7 @@ class BusinessesController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    @business.destroy
     redirect_to site_path(params[:site_id])
   end
 

@@ -1,0 +1,69 @@
+<p>業務詳細</p>
+<div class='marker field'>
+  <%= form_with model: @business ,url: site_business_path(@business.site,@business), local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
+    <div class="field">
+      <%= f.label :business_content_id %><br />
+      <%= f.collection_select(:business_content_id, BusinessContent.all, :id, :name) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :survey_id %><br />
+      <%= f.collection_select(:survey_id, Survey.all, :id, :name) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :development_id %><br />
+      <%= f.collection_select(:development_id, Development.all, :id, :name) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :order_day %><br />
+      <%= raw sprintf(
+                    f.date_field(
+                      :order_day,
+                      class:'select-day',
+                      id:"witness-date")
+                    ) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :delivery_day %><br />
+      <%= raw sprintf(
+                    f.date_field(
+                      :delivery_day,
+                      class:'select-day',
+                      id:"witness-date")
+                    ) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :user_id %><br />
+      <%= f.collection_select :user_id, User.all, :id, :name, prompt: true %>
+    </div>
+
+     <div class="actions">
+      <%= f.submit "登録" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="container">
+  <%= form_with(model: [@business, @comment],url: site_business_comments_path(@business.site,@business), local: true) do |form| %>
+    <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+    <%= form.submit "SEND" %>
+  <% end %>
+  <div class="comments">
+    <h4>＜コメント一覧＞</h4>
+    <% if @comments %>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= comment.user.name %>：</strong>
+          <%= comment.text %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+</div>

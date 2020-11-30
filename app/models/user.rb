@@ -7,5 +7,7 @@ class User < ApplicationRecord
     validates :name
     validates :password_confirmation
   end
-  has_many :sites
+
+  has_many :businesses
+
 end

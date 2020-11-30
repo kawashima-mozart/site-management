@@ -5,4 +5,5 @@ class Site < ApplicationRecord
   end
   has_many :markers, dependent: :destroy
   has_many :neighbors, dependent: :destroy
+  has_many :businesses, dependent: :destroy
 end

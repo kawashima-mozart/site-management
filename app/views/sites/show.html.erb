@@ -1,7 +1,30 @@
 <p><% @site.name %></p>
 
-<%= link_to '業務', '#' %>
+<%= link_to '業務登録', new_site_business_path(params[:id]) %>
 <%= link_to '近隣情報' ,new_site_neighbor_path(params[:id]) %>
+
+<div class='business lists'>
+  <% if @businesses.present? %>
+    <% @businesses.each do |business| %>
+      <div class='business list'>
+        <div class='business name'>
+          <p>業務名    <%= business.business_content.name %></p>
+        </div>
+        <div class='content'>
+          <% if business.business_content.id == 1%>
+            <%= link_to business.survey.name, edit_site_business_path(business.site,business) %>
+          <% else %>
+            <%= link_to business.development.name, edit_site_business_path(business.site,business) %>
+          <% end %>
+        </div>
+        <div class='person'>
+          <%= business.user.name %>
+        </div>
+        <%= link_to '削除', site_business_path(business.site,business), method: :delete %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 
 <p>境界標</p>
 <div class='marker field'>

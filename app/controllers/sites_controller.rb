@@ -32,6 +32,7 @@ class SitesController < ApplicationController
     @marker = Marker.new
     @markers = @site.markers.order(created_at: :asc)
     @neighbors = @site.neighbors.order(created_at: :asc)
+    @businesses = @site.businesses.includes(:user).order(created_at: :asc)
   end
 
   def destroy

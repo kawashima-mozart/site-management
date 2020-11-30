@@ -22,7 +22,7 @@ class BusinessesController < ApplicationController
   private
 
   def business_params
-    params.require(:business).permit(:business_content_id, :survey_id, :development_id, :order_day, :delivery_day).merge(site_id: params[:site_id])
+    params.require(:business).permit()
   end
 
   def set_business

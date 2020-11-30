@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_090341) do
+ActiveRecord::Schema.define(version: 2020_11_26_091954) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -31,18 +31,6 @@ ActiveRecord::Schema.define(version: 2020_11_27_090341) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "businesses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "business_content_id", null: false
-    t.integer "survey_id"
-    t.integer "development_id"
-    t.date "order_day", null: false
-    t.boolean "delivery_day"
-    t.bigint "site_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["site_id"], name: "index_businesses_on_site_id"
   end
 
   create_table "markers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -74,39 +62,11 @@ ActiveRecord::Schema.define(version: 2020_11_27_090341) do
     t.index ["site_id"], name: "index_neighbors_on_site_id"
   end
 
-  create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.date "start", null: false
-    t.date "done"
-    t.bigint "business_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["business_id"], name: "index_schedules_on_business_id"
-  end
-
   create_table "sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "customer", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "user_businesses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "business_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["business_id"], name: "index_user_businesses_on_business_id"
-    t.index ["user_id"], name: "index_user_businesses_on_user_id"
-  end
-
-  create_table "user_schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "schedule_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["schedule_id"], name: "index_user_schedules_on_schedule_id"
-    t.index ["user_id"], name: "index_user_schedules_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -125,9 +85,4 @@ ActiveRecord::Schema.define(version: 2020_11_27_090341) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "markers", "sites"
   add_foreign_key "neighbors", "sites"
-  add_foreign_key "schedules", "businesses"
-  add_foreign_key "user_businesses", "businesses"
-  add_foreign_key "user_businesses", "users"
-  add_foreign_key "user_schedules", "schedules"
-  add_foreign_key "user_schedules", "users"
 end

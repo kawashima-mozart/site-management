@@ -18,7 +18,7 @@ class BusinessesController < ApplicationController
   end
 
   def update
-    if @business.update
+    if @business.update(business_params)
       redirect_to site_path(params[:site_id])
     else
       render :edit

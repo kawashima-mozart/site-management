@@ -1,36 +1,10 @@
 <p><% @site.name %></p>
 
-<%= link_to '業務登録', new_site_business_schedule_path(params[:id]) %>
+<%= link_to '業務', '#' %>
 <%= link_to '近隣情報' ,new_site_neighbor_path(params[:id]) %>
 
-<div class='business lists'>
-  <% if @businesses.present? %>
-    <p>業務</p>
-
-
-    <% @businesses.each do |business| %>
-      <div class='business list'>
-        <div class='business name'>
-          <%= business.survey.name %></p>
-        </div>
-        <div class='person name'>
-            <div class='person'>
-              <% business.users.each do |user| %>
-                <p>担当<%= user.name %></p>
-              <% end %>
-            </div> 
-        </div>
-        <%= link_to '編集', edit_site_business_path(business.site_id,business.id)%>
-        <%= link_to '削除', site_business_path(business.site_id,business.id) ,method: :delete %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-
-
+<p>境界標</p>
 <div class='marker field'>
-  <p>境界標</p>
   <%= form_with(model: [@site,@marker], local: true) do |f| %>
 
     <div class="actions">
@@ -97,7 +71,6 @@
 
 <div class='neighbor lists'>
   <% if @neighbors.present? %>
-    <p>近隣情報</p>
     <% @neighbors.each do |neighbor| %>
       <div class='neighbor list'>
         <div class='neighbor lot_number'>

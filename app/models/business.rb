@@ -1,5 +1,5 @@
 class Business < ApplicationRecord
-  belongs_to :site
+
   has_many :user_businesses, dependent: :destroy
   has_many :users, through: :user_businesses
   has_many :schedules, dependent: :destroy

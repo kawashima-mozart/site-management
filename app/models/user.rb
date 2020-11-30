@@ -9,5 +9,6 @@ class User < ApplicationRecord
   end
 
   has_many :businesses
+  has_many :comments
 
 end

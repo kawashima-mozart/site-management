@@ -1,6 +1,7 @@
 class Business < ApplicationRecord
   belongs_to :site
   belongs_to :user
+  has_many :comments
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :business_content

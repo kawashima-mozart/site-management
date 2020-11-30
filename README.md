@@ -86,6 +86,8 @@ Things you may want to cover:
   | Column              | Type       | Options                        |
   | ------------------- | ---------- | ------------------------------ |
   | business_content_id | integer    | null: false                    |
+  | survey_id           | integer    |                                |
+  | development_id      | integer    |                                |
   | start               | date       | null: false                    |
   | end                 | boolean    |                                |
   | person              | references | null: false, foreign_key: true |

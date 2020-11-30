@@ -3,7 +3,7 @@ class MarkersController < ApplicationController
 
   def create
     @marker = Marker.create(marker_params)
-    redirect_to site_path(@marker.site.id)
+    redirect_to site_path(params[:site_id])
   end
 
   def edit
@@ -11,7 +11,7 @@ class MarkersController < ApplicationController
 
   def update
     if @marker.update(marker_params)
-      redirect_to site_path(@marker.site.id)
+      redirect_to site_path(params[:site_id])
     else
       render :edit
     end
@@ -19,7 +19,7 @@ class MarkersController < ApplicationController
 
   def destroy
     @marker.destroy
-    redirect_to site_path(@marker.site.id)
+    redirect_to site_path(params[:site_id])
   end
 
   private

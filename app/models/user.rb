@@ -10,5 +10,7 @@ class User < ApplicationRecord
 
   has_many :businesses
   has_many :comments
+  has_many :event_users, dependent: :destroy
+  has_many :events, through: :event_users
 
 end

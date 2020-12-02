@@ -5,10 +5,13 @@ import googleCalendarPlugin from '@fullcalendar/google-calendar';
 
 if(location.pathname.match("^/users/([0-9]+)$")){
   document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
+  const calendarEl = document.getElementById('calendar');
 
   var calendar = new Calendar(calendarEl, {
     plugins: [ dayGridPlugin, interactionPlugin, googleCalendarPlugin ],
+    dayCellContent: function(e) {
+      e.dayNumberText = e.dayNumberText.replace('日', '');
+    },
     googleCalendarApiKey: process.env.GOOGLE_CALENDAR_API_KEY,
     eventSources: [
       {
@@ -16,12 +19,7 @@ if(location.pathname.match("^/users/([0-9]+)$")){
         className: 'holiday'
       }
     ],
-    locale: 'ja',
-    height: 'auto',
-    firstDay: 1,
-    businessHours: true,
-    navLinks: true,
-    editable: true,
+
     headerToolbar: {
       left: 'prev,next today',
       center: "title",
@@ -33,8 +31,16 @@ if(location.pathname.match("^/users/([0-9]+)$")){
       week: '週',
       day: '日'
     },
-    
+
+    locale: 'ja',
+    height: 'auto',
+    firstDay: 1,
+    businessHours: true,
+    navLinks: true,
+    editable: true,
+    eventLimit: true,
   });
+
   calendar.render();
 });
 }

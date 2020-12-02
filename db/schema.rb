@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_044928) do
     t.string "title", null: false
     t.date "start", null: false
     t.date "end"
+    t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

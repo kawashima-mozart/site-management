@@ -4,6 +4,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.string :title, null: false
       t.date :start, null: false
       t.date :end
+      t.text :memo
 
       t.timestamps
     end

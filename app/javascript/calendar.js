@@ -37,12 +37,14 @@ if(location.pathname.match("^/users/([0-9]+)$")){
       firstDay: 0,
       navLinks: true,
       businessHours: true,
-      editable: true,
       eventClick: function(info){
         info.jsEvent.preventDefault();
         content(info);
       }
     });
+    function content(info){
+      console.log('ああああ')
+    };
 
     calendar.render();
   });

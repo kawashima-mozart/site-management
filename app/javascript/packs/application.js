@@ -9,6 +9,11 @@ require("@rails/activestorage").start()
 require("channels")
 require("../calendar")
 
+('.js-searchable').select2({
+  width: 200,
+  allowClear: true
+});
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

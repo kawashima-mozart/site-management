@@ -19,7 +19,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    if@event.update
+    if@event.update(event_params)
       redirect_to users_path
     else
       render :edit

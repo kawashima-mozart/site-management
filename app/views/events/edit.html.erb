@@ -1,6 +1,6 @@
 <p>業務登録</p>
 <div class='marker field'>
-  <%= form_with model: @event, local: true do |f| %>
+  <%= form_with model: @event,url: event_path(@event.id), local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
 
@@ -56,3 +56,5 @@
     </div>
   <% end %>
 </div>
+
+<%= link_to '削除', event_path(@event.id), method: :destroy%>

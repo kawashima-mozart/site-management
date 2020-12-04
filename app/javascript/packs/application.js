@@ -8,11 +8,8 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require("../calendar")
-
-('.js-searchable').select2({
-  width: 200,
-  allowClear: true
-});
+//= require jquery
+//= require jquery_ujs
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

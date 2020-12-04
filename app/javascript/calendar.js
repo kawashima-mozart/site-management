@@ -3,7 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
 
-if(location.pathname.match("^/users/([0-9]+)$")){
+if(location.pathname.match("^/users$")){
   document.addEventListener('DOMContentLoaded', function() {
     const calendarEl = document.getElementById('calendar');
 
@@ -16,7 +16,19 @@ if(location.pathname.match("^/users/([0-9]+)$")){
       eventSources: [
         {
           googleCalendarId: 'ja.japanese#holiday@group.v.calendar.google.com',
+          display:'background', 
+          backgroundColor: 'lightgrey',
+          overlap:true,
           className: 'holiday'
+        },
+        { url: '/users.json',
+          textColor: 'black',
+          backgroundColor: 'lightblue',
+          editable:true,
+          resourceEditable: true,
+          navLinks: true,
+          selectable: true,
+          editable:  true,
         }
       ],
 
@@ -26,7 +38,7 @@ if(location.pathname.match("^/users/([0-9]+)$")){
         right: 'dayGridMonth,dayGridWeek,dayGridDay'
         },
       buttonText: {
-        today: '今月',
+        today: '今日',
         month: '月',
         week: '週',
         day: '日'
@@ -36,18 +48,15 @@ if(location.pathname.match("^/users/([0-9]+)$")){
       height: 'auto',
       firstDay: 0,
       navLinks: true,
+      selectable: true,
       businessHours: true,
       eventClick: function(info){
         info.jsEvent.preventDefault();
-        content(info);
-      }
+        window.location.href = `/events/${info.event.id}/edit`
+      },
     });
-    function content(info){
-      console.log('ああああ')
-    };
 
     calendar.render();
   });
 }
-  
 

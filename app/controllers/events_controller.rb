@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:edit, :update, :destroy, :show]
+  before_action :set_event, only: [:edit, :update, :destroy]
 
   def new
     @event = Event.new
@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      redirect_to user_path(current_user.id)
+      redirect_to users_path
     else
       flash.now[:alert] = 'スケジュールが保存されませんでした'
       render :new
@@ -19,8 +19,8 @@ class EventsController < ApplicationController
   end
 
   def update
-    if@event.save
-      redirect_to user_path(current_user.id)
+    if@event.update
+      redirect_to users_path
     else
       render :edit
     end
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to user_path(current_user.id)
+    redirect_to users_path
   end
 
   private
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
   end
 
   def set_event
-    @event = Event.find(:id)
+    @event = Event.find(params[:id])
   end
 
 end

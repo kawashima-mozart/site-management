@@ -73,3 +73,14 @@
     <% end %>
   </div>
 </div>
+
+
+<div class=''>
+<% if @comments %>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= comment.user.name %>：</strong>
+          <%= comment.text %>
+        </p>
+      <% end %>
+    <% end %>

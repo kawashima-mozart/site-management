@@ -46,6 +46,7 @@
         <option value=<%= user.id %>><%= user.name %></option>
         <% end %>
       </select>
+    </div>
 
    <div class="field">
       <%= f.label :survey_day %><br />
@@ -60,7 +61,6 @@
     <div class="actions">
       <%= f.submit "登録" %>
     </div>
-
-    <%=params%>
+    
   <% end %>
 </div>

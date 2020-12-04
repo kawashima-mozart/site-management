@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_130216) do
+ActiveRecord::Schema.define(version: 2020_12_02_032815) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,19 @@ ActiveRecord::Schema.define(version: 2020_11_30_130216) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["business_id"], name: "index_comments_on_business_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "start_day", null: false
+    t.datetime "end_day"
+    t.text "memo"
+    t.bigint "business_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_events_on_business_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "markers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -112,6 +125,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_130216) do
   add_foreign_key "businesses", "users"
   add_foreign_key "comments", "businesses"
   add_foreign_key "comments", "users"
+  add_foreign_key "events", "businesses"
+  add_foreign_key "events", "users"
   add_foreign_key "markers", "sites"
   add_foreign_key "neighbors", "sites"
 end

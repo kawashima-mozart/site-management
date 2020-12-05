@@ -1,0 +1,100 @@
+<div class='event field'>
+  <%= form_with model: @event, local: true do |f| %>
+    <div class="field">
+      <input name='business_id', value=<%= @business.id%>>
+    </div>
+    <div class="field">
+      <input name='title', value='測量日'>
+    </div>
+    <div class="field">
+      <input name='start_day', value=<%=@business.survey_day%>>
+    </div>
+    <div class="actions">
+      <%= f.submit "登録" %>
+    </div>
+  <% end %>
+</div>
+
+    <%= form_with model: @event, local: true do |f| %>
+    <div class="field">
+      <input name='business_id', value=<%= @business.id%>>
+    </div>
+    <div class="field">
+      <input name='title', value='仮求積図'>
+    </div>
+    <div class="field">
+      <input name='start_day', value=<%=@business.survey_day+7%>>
+    </div>
+    <div class="actions">
+      <%= f.submit "登録" %>
+    </div>
+  <% end %>
+</div>
+
+  <%= form_with model: @event, local: true do |f| %>
+    <div class="field">
+      <input name='business_id', value=<%= @business.id%>>
+    </div>
+    <div class="field">
+      <input name='title', value='立会'>
+    </div>
+    <div class="field">
+      <input name='start_day', value=<%=@business.survey_day+7%>>
+       <input name='end_day', value=<%=@business.survey_day+21%>>
+    </div>
+    <div class="actions">
+      <%= f.submit "登録" %>
+    </div>
+  <% end %>
+</div>
+
+  <%= form_with model: @event, local: true do |f| %>
+    <div class="field">
+      <input name='business_id', value=<%= @business.id%>>
+    </div>
+    <div class="field">
+      <input name='title', value='最終図面作成'>
+    </div>
+    <div class="field">
+      <input name='start_day', value=<%=@business.survey_day+25%>>
+    </div>
+    <div class="actions">
+      <%= f.submit "登録" %>
+    </div>
+  <% end %>
+</div>
+
+
+  <%= form_with model: @event, local: true do |f| %>
+    <div class="field">
+      <input name='business_id', value=<%= @business.id%>>
+    </div>
+    <div class="field">
+      <input name='title', value='押印取得'>
+    </div>
+    <div class="field">
+      <input name='start_day', value=<%=@business.survey_day+26%>>
+       <input name='end_day', value=<%=@business.survey_day+47%>>
+    </div>
+    <div class="actions">
+      <%= f.submit "登録" %>
+    </div>
+  <% end %>
+</div>
+
+
+  <%= form_with model: @event, local: true do |f| %>
+    <div class="field">
+      <input name='business_id', value=<%= @business.id%>>
+    </div>
+    <div class="field">
+      <input name='title', value='押印取得'>
+    </div>
+    <div class="field">
+      <input name='start_day', value=<%=@business.survey_day+55%>>
+    </div>
+    <div class="actions">
+      <%= f.submit "登録" %>
+    </div>
+  <% end %>
+</div>

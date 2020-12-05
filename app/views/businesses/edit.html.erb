@@ -66,7 +66,7 @@
     <% if @comments %>
       <% @comments.each do |comment| %>
         <p>
-          <strong><%= comment.user.name %>：</strong>
+          <%= comment.user.name %>
           <%= comment.text %>
         </p>
       <% end %>
@@ -75,12 +75,16 @@
 </div>
 
 
-<div class=''>
-<% if @comments %>
-      <% @comments.each do |comment| %>
-        <p>
-          <strong><%= comment.user.name %>：</strong>
-          <%= comment.text %>
-        </p>
-      <% end %>
+<div class='events'>
+  <% if @events %>
+    <% @events.each do |event| %>
+      <p>
+        <%=link_to event.start_day.strftime("%Y年%m月%d日"),edit_event_path(event.id) %>
+        <% if event.end_day%>
+         <%'~' + event.start_day.strftime("%Y年%m月%d日")%>
+         <% end %>
+        <%=event.business.site.name + event.business.business_content.name + event.title %>
+      </p>
     <% end %>
+  <% end %>
+</div>

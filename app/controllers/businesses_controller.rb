@@ -17,6 +17,8 @@ class BusinessesController < ApplicationController
   def edit
     @comment = Comment.new
     @comments = @business.comments
+    @events = @business.events
+    @event = Event.new
   end
 
   def update

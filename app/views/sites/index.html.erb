@@ -1,15 +1,29 @@
-<p>トップページ</p>
-<%= link_to current_user.name, users_path %>
-<%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-<%= link_to '新規現場登録', new_site_path %>
+<div class='content'>
+  <div class= 'new_site'>
+    <%= link_to '新規現場登録', new_site_path %>
+  </div>
 
-<div class='site lists'>
-  <% @sites.each do |site| %>
-    <div class='site list'>
-      <%= link_to site.name, site_path(site.id) %>
-      <%= site.customer%>
-      <%= link_to "編集", edit_site_path(site.id) %>
-      <%= link_to "削除", site_path(site.id), method: :delete%>
+  <div class='site_lists'>
+    <div class='list_title'>
+      <h6>現場名</h6>
+      <h6>顧客名</h6>
+      <h6>編集</h6>
     </div>
-  <% end %>
+    <% @sites.each do |site| %>
+      <div class='site_list'>
+        <div class='site_title'>
+          <%= link_to site.name, site_path(site.id) %>
+        </div>
+        <div class='site_title'>
+          <%= site.customer%>
+        </div>
+        <div class='site_title'>
+          <div class='site_edit'>
+            <%= link_to "編集", edit_site_path(site.id) %>
+            <%= link_to "削除", site_path(site.id), method: :delete%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

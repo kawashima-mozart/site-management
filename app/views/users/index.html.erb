@@ -1,9 +1,16 @@
-<%# CSS・・・assets/stylesheets/users/show.css %>
-<p>ユーザーページ</p>
-<%= link_to '編集', edit_user_registration_path %>
+<div class='content'>
+  <div class='users_btn'>
+   
+    <div class="make_events">
+      <%= link_to "予定の作成", new_event_path%>
+    </div>
 
-<div id='calendar'></div>
-
-<div class="make">
-  <%= link_to "予定の作成", new_event_path%>
+     <div class='user_edit'>
+      <%= link_to 'ユーザー編集', edit_user_registration_path %>
+    </div>
+    
+  </div>
+  <div class='calendar_area'>
+    <div id='calendar'></div>
+  </div>
 </div>

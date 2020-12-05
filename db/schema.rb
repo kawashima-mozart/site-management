@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 2020_12_02_032815) do
     t.integer "business_content_id", null: false
     t.integer "survey_id"
     t.integer "development_id"
-    t.date "order_day", null: false
-    t.date "delivery_day"
-    t.date "survey_day", null: false
+    t.datetime "order_day", null: false
+    t.datetime "delivery_day"
+    t.datetime "survey_day", null: false
     t.bigint "site_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false

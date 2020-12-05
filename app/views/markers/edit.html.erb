@@ -1,43 +1,44 @@
+<div class='content'>
+  <p>境界標</p>
+  <div class='marker field'>
+    <%= form_with(model: @marker, url: site_marker_path(@marker.site,@marker), local: true) do |f| %>
 
-<p>境界標</p>
-<div class='marker field'>
-  <%= form_with(model: @marker, url: site_marker_path(@marker.site,@marker), local: true) do |f| %>
+      <%= render 'shared/error_messages', model: f.object%>
 
-    <%= render 'shared/error_messages', model: f.object%>
+      <div class="actions">
+        <%= f.submit "更新" %>
+      </div>
 
-    <div class="actions">
-      <%= f.submit "更新" %>
-    </div>
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true %>
+      </div>
 
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true %>
-    </div>
+      <div class="field">
+        <%= f.label :name_cad %><br />
+        <%= f.text_field :name_cad %>
+      </div>
 
-    <div class="field">
-      <%= f.label :name_cad %><br />
-      <%= f.text_field :name_cad %>
-    </div>
+      <div class="field">
+      <%= f.label :exist %><br />
+        <%= f.collection_select(:exist_id, Exist.all, :id, :name) %>
+      </div>
 
-    <div class="field">
-    <%= f.label :exist %><br />
-      <%= f.collection_select(:exist_id, Exist.all, :id, :name) %>
-    </div>
+      <div class="field">
+        <%= f.label :type %><br />
+        <%= f.collection_select(:type_id, Type.all, :id, :name) %>
+      </div>
 
-    <div class="field">
-      <%= f.label :type %><br />
-      <%= f.collection_select(:type_id, Type.all, :id, :name) %>
-    </div>
+      <div slass='fields'>
+      <%= f.label :images %><br />
+        <%= f.file_field :images, name: 'marker[images][]', id: 'marker_images' %>
+      </div>
+    <% end %>
+  </div>
 
-    <div slass='fields'>
-    <%= f.label :images %><br />
-      <%= f.file_field :images, name: 'marker[images][]', id: 'marker_images' %>
-    </div>
-  <% end %>
-</div>
-
-<div class='sample_image'>
-  <% @marker.images.each do |image| %>
-    <%= image_tag image %>
-  <% end %>
+  <div class='sample_image'>
+    <% @marker.images.each do |image| %>
+      <%= image_tag image.variant(resize: '300x300') %>
+    <% end %>
+  </div>
 </div>

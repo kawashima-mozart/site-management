@@ -1,48 +1,50 @@
-<p>業務登録</p>
-<div class='marker field'>
-  <%= form_with model: @event,url: event_path(@event.id), local: true do |f| %>
+<div class=content>
+  <p>業務登録</p>
+  <div class='marker field'>
+    <%= form_with model: @event,url: event_path(@event.id), local: true do |f| %>
 
-    <%= render 'shared/error_messages', model: f.object %>
+      <%= render 'shared/error_messages', model: f.object %>
 
-     <div class="field">
-      <select name= "business_id">
-        <option value="">現場を選択してください</option>
-        <% Business.all.each do |business| %>
-          <%if business.user_id == current_user.id%>
-            <% if business.business_content_id == 1%>
-              <option value=<%= business.id %>><%= business.site.name + business.survey.name %></option>
-            <% end %>
-            <% if business.business_content_id == 2%>
-              <option value=<%= business.id %>><%= business.site.name + business.development.name %></option>
+      <div class="field">
+        <select name= "business_id">
+          <option value="">現場を選択してください</option>
+          <% Business.all.each do |business| %>
+            <%if business.user_id == current_user.id%>
+              <% if business.business_content_id == 1%>
+                <option value=<%= business.id %>><%= business.site.name + business.survey.name %></option>
+              <% end %>
+              <% if business.business_content_id == 2%>
+                <option value=<%= business.id %>><%= business.site.name + business.development.name %></option>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
-      </select>
-    </div>
+        </select>
+      </div>
 
-    <div class="field">
-      <%= f.label :title %><br />
-      <%= f.text_field :title, autofocus: true %>
-    </div>
+      <div class="field">
+        <%= f.label :title %><br />
+        <%= f.text_field :title, autofocus: true %>
+      </div>
 
-    <div class="field">
-      <%= f.label :start_day %><br />
-      <%= raw sprintf(
-                    f.date_field(
-                      :start_day,
-                      class:'select-day',
-                      id:"start-date")
-                    ) %>
-    </div>
+      <div class="field">
+        <%= f.label :start_day %><br />
+        <%= raw sprintf(
+                      f.date_field(
+                        :start_day,
+                        class:'select-day',
+                        id:"start-date")
+                      ) %>
+      </div>
 
-    <div class="field">
-      <%= f.label :end_day %><br />
-      <%= raw sprintf(
-                    f.date_field(
-                      :end_day,
-                      class:'select-day',
-                      id:"end-date")
-                    ) %>
+      <div class="field">
+        <%= f.label :end_day %><br />
+        <%= raw sprintf(
+                      f.date_field(
+                        :end_day,
+                        class:'select-day',
+                        id:"end-date")
+                      ) %>
+      </div>
     </div>
 
     <div class="field">

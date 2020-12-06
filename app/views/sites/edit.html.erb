@@ -1,5 +1,8 @@
 <div class='content'>
-  <h2>現場登録</h2>
+  <div class='title'>
+    <h4>現場登録</h4>
+    <%= link_to '戻る', :back%>
+  </div>
 
   <%= form_with(model: @site, url: site_path(@site.id), local: true) do |f| %>
     <%= render 'shared/error_messages', model: f.object %>

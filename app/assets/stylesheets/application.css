@@ -177,10 +177,6 @@ header {
   margin: 10px;
 }
 
-/* title */
-h2{
-  margin: 10px 0;
-}
 
 /* edit_business */
 .business_entire{
@@ -215,6 +211,11 @@ h2{
 }
 
 /* site_show */
+.title{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
 .business_new{
   margin: 15px 0;
 }
@@ -241,7 +242,7 @@ h2{
 }
 
 .business_name{
-  width: 100px;
+  width: 150px;
   margin-left: 10px;
 }
 
@@ -275,6 +276,7 @@ width: 100px;
   background-color: white;
   border: 1px solid black;
   max-height: 200px;
+  white-space:nowrap;
   overflow: scroll;
   margin-bottom: 20px;
 }
@@ -311,7 +313,7 @@ width: 100px;
 }
 
 .neighbor_status{
-  width: 150px;
+  width: 120px;
 }
 
 .marker_entire{
@@ -360,4 +362,11 @@ margin-bottom: 20px;
   margin-bottom: 20px;
 }
 
+.neighbor_forms{
+  display: flex;
+}
 
+.neighbor_left{
+  height: 500px;
+  margin-right: 100px;
+}

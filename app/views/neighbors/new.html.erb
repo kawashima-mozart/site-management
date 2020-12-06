@@ -1,76 +1,84 @@
 <div class='content'>
-  <p>近隣情報登録</p>
+  <div class='title'>
+    <p>近隣情報登録</p>
+    <%= link_to '戻る', :back%>
+  </div>
   <div class='neighbor_field'>
     <%= form_with model: @neighbor,url: site_neighbors_path, local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
+      <div class='neighbor_forms'>
+        <div class='neighbor_left'>
+          <div class="field">
+            <%= f.label :lot_number %><br />
+            <%= f.text_field :lot_number, autofocus: true %>
+          </div>
 
-      <div class="field">
-        <%= f.label :lot_number %><br />
-        <%= f.text_field :lot_number, autofocus: true %>
-      </div>
+          <div class="field">
+            <%= f.label :name %><br />
+            <%= f.text_field :name, autocomplete: "name" %>
+          </div>
 
-      <div class="field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name, autocomplete: "name" %>
-      </div>
+          <div class="field">
+            <%= f.label :address %><br />
+            <%= f.text_field :address, autocomplete: "street-address" %>
+          </div>
 
-      <div class="field">
-        <%= f.label :address %><br />
-        <%= f.text_field :address, autocomplete: "street-address" %>
-      </div>
+          <div class="field">
+            <%= f.label :address_now %><br />
+            <%= f.text_field :address_now, autocomplete: "street-address" %>
+          </div>
 
-      <div class="field">
-        <%= f.label :address_now %><br />
-        <%= f.text_field :address_now, autocomplete: "street-address" %>
-      </div>
+          <div class="field">
+            <%= f.label :phone_number %><br />
+            <%= f.text_field :phone_number, autocomplete: "tel-area-code" %>
+          </div>
 
-      <div class="field">
-        <%= f.label :phone_number %><br />
-        <%= f.text_field :phone_number, autocomplete: "tel-area-code" %>
-      </div>
+          <div class="field">
+          <%= f.label :status %><br />
+            <%= f.collection_select(:status_id, Status.all, :id, :name) %>
+          </div>
+        </div>
 
-      <div class="field">
-      <%= f.label :status %><br />
-        <%= f.collection_select(:status_id, Status.all, :id, :name) %>
-      </div>
+        <div class='neighbor_right'>
+          <div class="field">
+            <%= f.label :witness %>
+            <%= f.check_box :witness %>
+          </div>
 
-      <div class="field">
-        <%= f.label :witness %>
-        <%= f.check_box :witness %>
-      </div>
+          <div class="field">
+            <%= raw sprintf(
+                          f.date_field(
+                            :witness_day,
+                            class:'select-day',
+                            id:"witness-date")
+                          ) %>
+          </div>
 
-      <div class="field">
-        <%= raw sprintf(
-                      f.date_field(
-                        :witness_day,
-                        class:'select-day',
-                        id:"witness-date")
-                      ) %>
-      </div>
+          <div class="field">
+            <%= f.label :imprint %>
+            <%= f.check_box :imprint %>
+          </div>
 
-      <div class="field">
-        <%= f.label :imprint %>
-        <%= f.check_box :imprint %>
-      </div>
+          <div class="field">
+            <%= raw sprintf(
+                          f.date_field(
+                            :imprint_day,
+                            class:'select-day',
+                            id:"witness-date")
+                          ) %>
+          </div>
 
-      <div class="field">
-        <%= raw sprintf(
-                      f.date_field(
-                        :imprint_day,
-                        class:'select-day',
-                        id:"witness-date")
-                      ) %>
-      </div>
+        
+          <div class="field">
+            <%= f.label :memo %><br />
+            <%= f.text_area :memo %>
+          </div>
 
-    
-      <div class="field">
-        <%= f.label :memo %><br />
-        <%= f.text_area :memo %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "登録" %>
+          <div class="actions">
+            <%= f.submit "登録" %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>

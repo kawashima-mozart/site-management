@@ -1,6 +1,9 @@
 <div class='content'>
-  <p>業務詳細</p>
-  <div　 class='business_entire'>
+  <div class='title'>
+    <p>業務詳細</p>
+    <%= link_to '戻る', :back%>
+  </div>
+  <div class='business_entire'>
     <div class='business_details'>
       <div class='marker field'>
         <%= form_with model: @business ,url: site_business_path(@business.site,@business), local: true do |f| %>
@@ -58,12 +61,7 @@
             <%= f.submit "更新" %>
           </div>
         <% end %>
-      </div>
-    
-
-      <%= link_to '戻る', site_path(@business.site)%>
-
-      
+      </div>    
     </div>
 
     <div class='board'>

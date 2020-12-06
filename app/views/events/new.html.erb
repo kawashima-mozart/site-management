@@ -1,5 +1,8 @@
 <div class='content'>
-  <p>スケジュール登録</p>
+  <div class='title'>
+    <p>スケジュール登録</p>
+    <%= link_to '戻る', :back%>
+  </div>
   <div class='event field'>
     <%= form_with model: @event, local: true do |f| %>
 

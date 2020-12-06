@@ -1,5 +1,8 @@
 <div class='content'>
-  <p>業務登録</p>
+    <div class='title'>
+    <p>業務登録</p>  
+    <%= link_to '戻る', :back%>
+  </div>
   <div class='marker field'>
     <%= form_with model: @business ,url: site_businesses_path, local: true do |f| %>
 

@@ -1,5 +1,8 @@
 <div class='content'>
-  <p>境界標</p>
+  <div class='title'>
+    <p>境界標</p>
+    <%= link_to '戻る', :back%>
+  </div>
   <div class='marker field'>
     <%= form_with(model: @marker, url: site_marker_path(@marker.site,@marker), local: true) do |f| %>
 

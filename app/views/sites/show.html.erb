@@ -1,10 +1,12 @@
 <div class='content'>
-  <h2>現場名  <%=@site.name %></h2>
+  <div class='title'>
+    <h4>現場名  <%=@site.name %></h4>
+    <%= link_to '戻る', root_path %>
+  </div>
   <div class='business_new'>
     <%= link_to '新規業務登録', new_site_business_path(params[:id]) %>
     <%= link_to '近隣情報' ,new_site_neighbor_path(params[:id]) %>
   </div>
-
   <div class='business_lists'>
     <% if @businesses.present? %>
       <% @businesses.each do |business| %>
@@ -44,7 +46,7 @@
             <p>名前   
             <%= link_to neighbor.name,  edit_site_neighbor_path(neighbor.site,neighbor) %></p>
           </div>
-          <div class='neighbor status'>
+          <div class='neighbor_status'>
             <p><%= neighbor.status.name %></p>
           </div>
           <div class='neighbor_delete'>

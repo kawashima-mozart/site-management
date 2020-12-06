@@ -16,8 +16,8 @@ class BusinessesController < ApplicationController
 
   def edit
     @comment = Comment.new
-    @comments = @business.comments
-    @events = @business.events
+    @comments = @business.comments.order(created_at: :desc)
+    @events = @business.events.order(created_at: :asc)
     @event = Event.new
   end
 

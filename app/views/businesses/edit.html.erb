@@ -1,93 +1,109 @@
 <div class='content'>
   <p>業務詳細</p>
-  <div class='marker field'>
-    <%= form_with model: @business ,url: site_business_path(@business.site,@business), local: true do |f| %>
+  <div　 class='business_entire'>
+    <div class='business_details'>
+      <div class='marker field'>
+        <%= form_with model: @business ,url: site_business_path(@business.site,@business), local: true do |f| %>
 
-      <%= render 'shared/error_messages', model: f.object %>
+          <%= render 'shared/error_messages', model: f.object %>
 
-      <div class="field">
-        <%= f.label :business_content_id %><br />
-        <%= f.collection_select(:business_content_id, BusinessContent.all, :id, :name) %>
-      </div>
+          <div class="field">
+            <p><%=@business.business_content.name%>
+            <input name='business_content_id', type='hidden', value=<%=@business.business_content_id%>>
+          </div>
 
-      <div class="field">
-        <%= f.label :survey_id %><br />
-        <%= f.collection_select(:survey_id, Survey.all, :id, :name) %>
-      </div>
-
-      <div class="field">
-        <%= f.label :development_id %><br />
-        <%= f.collection_select(:development_id, Development.all, :id, :name) %>
-      </div>
-
-      <div class="field">
-        <%= f.label :order_day %><br />
-        <%= raw sprintf(
-                      f.date_field(
-                        :order_day,
-                        class:'select-day',
-                        id:"witness-date")
-                      ) %>
-      </div>
-
-      <div class="field">
-        <%= f.label :delivery_day %><br />
-        <%= raw sprintf(
-                      f.date_field(
-                        :delivery_day,
-                        class:'select-day',
-                        id:"witness-date")
-                      ) %>
-      </div>
-
-      <div class="field">
-      <%= f.label :usr_id %><br />
-        <select name= "user_id">
-          <option value="">担当を選択してください</option>
-          <% User.all.each do |user| %>
-          <option value=<%= user.id %>><%= user.name %></option>
+          <%if @business.business_content_id == 1%>
+            <div class="field">
+              <%= f.label :survey_id %><br />
+              <%= f.collection_select(:survey_id, Survey.all, :id, :name) %>
+            </div>
+          <% else %>
+            <div class="field">
+              <%= f.label :development_id %><br />
+              <%= f.collection_select(:development_id, Development.all, :id, :name) %>
+            </div>
           <% end %>
-        </select>
 
-      <div class="actions">
-        <%= f.submit "登録" %>
-      </div>
-    <% end %>
-  </div>
+          <div class="field">
+            <%= f.label :order_day %><br />
+            <%= raw sprintf(
+                          f.date_field(
+                            :order_day,
+                            class:'select-day',
+                            id:"witness-date")
+                          ) %>
+          </div>
 
-  <%= link_to '戻る', site_path(@business.site)%>
+          <div class="field">
+            <%= f.label :delivery_day %><br />
+            <%= raw sprintf(
+                          f.date_field(
+                            :delivery_day,
+                            class:'select-day',
+                            id:"witness-date")
+                          ) %>
+          </div>
 
-  <div class="container">
-    <%= form_with(model: [@business, @comment],url: site_business_comments_path(@business.site,@business), local: true) do |form| %>
-      <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
-      <%= form.submit "SEND" %>
-    <% end %>
-    <div class="comments">
-      <% if @comments %>
-        <h4>＜コメント一覧＞</h4>
-        <% @comments.each do |comment| %>
-          <p>
-            <%= comment.user.name %>
-            <%= comment.text %>
-          </p>
+          <div class="field">
+            <%= f.label :user_id %><br />
+              <select name= "user_id">
+                <option value="">担当を選択してください</option>
+                <% User.all.each do |user| %>
+                  <option value=<%= user.id %>><%= user.name %></option>
+                <% end %>
+            </select>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "更新" %>
+          </div>
         <% end %>
-      <% end %>
+      </div>
+    
+
+      <%= link_to '戻る', site_path(@business.site)%>
+
+      
     </div>
-  </div>
+
+    <div class='board'>
+
+      <div class="comment_form">
+        <%= form_with(model: [@business, @comment],url: site_business_comments_path(@business.site,@business), local: true) do |form| %>
+          <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+          <%= form.submit "SEND" %>
+        <% end %>
+      </div>
+
+      <div class="comments">
+        <% if @comments %>
+          <h4>＜コメント一覧＞</h4>
+          <div class='comment'>
+            <% @comments.each do |comment| %>
+              <p>
+                <%= comment.user.name %>:
+                <%= comment.text %>
+              </p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
 
 
-  <div class='events'>
-    <% if @events %>
-      <p>予定一覧</p>
-      <% @events.each do |event| %>
-        <p>
-          <%=link_to event.start_day.strftime("%Y年%m月%d日"),edit_event_path(event.id) %>
-          <% if event.end_day%>
-          <%'~' + event.start_day.strftime("%Y年%m月%d日")%>
+      <div class='events'>
+        <% if @events %>
+          <p>予定一覧</p>
+          <% @events.each do |event| %>
+            <p>
+              <%=link_to event.start_day.strftime("%Y年%m月%d日"),edit_event_path(event.id) %>
+              <% if event.end_day%>
+              <%'~' + event.start_day.strftime("%Y年%m月%d日")%>
+              <% end %>
+              <%=event.business.site.name + event.business.business_content.name + event.title %>
+            </p>
           <% end %>
-          <%=event.business.site.name + event.business.business_content.name + event.title %>
-        </p>
-      <% end %>
-    <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

@@ -24,7 +24,7 @@ if(location.pathname.match("^/users$")){
         { url: '/users.json',
           textColor: 'black',
           backgroundColor: 'lightblue',
-          editable:true,
+          editable: true,
           resourceEditable: true,
           navLinks: true,
           selectable: true,

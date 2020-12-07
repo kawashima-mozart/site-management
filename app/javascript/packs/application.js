@@ -10,6 +10,7 @@ require("channels")
 require("../calendar")
 //= require jquery
 //= require jquery_ujs
+//= require fullcalendar
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

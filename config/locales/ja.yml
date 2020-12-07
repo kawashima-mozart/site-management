@@ -29,8 +29,8 @@ ja:
         memo: メモ
       business:
         business_content_id: 業務内容
-        survey_id: 種類
-        development_id: 種類
+        survey_id: 測量業務種類
+        development_id: 開発業務種類
         order_day: 受注日
         delivery_day: 納品日
         survey_day: 測量日

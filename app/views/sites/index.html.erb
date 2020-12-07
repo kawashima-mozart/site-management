@@ -1,29 +1,108 @@
 <div class='content'>
-  <div class= 'new_site'>
-    <%= link_to '新規現場登録', new_site_path %>
-  </div>
+  <div class='site_content'>
 
-  <div class='site_lists'>
-    <div class='list_title'>
-      <h6>現場名</h6>
-      <h6>顧客名</h6>
-      <h6>編集</h6>
-    </div>
-    <% @sites.each do |site| %>
-      <div class='site_list'>
-        <div class='site_title'>
-          <%= link_to site.name, site_path(site.id) %>
-        </div>
-        <div class='site_title'>
-          <%= site.customer%>
-        </div>
-        <div class='site_title'>
-          <div class='site_edit'>
-            <%= link_to "編集", edit_site_path(site.id) %>
-            <%= link_to "削除", site_path(site.id), method: :delete%>
+    <div class='site_left'>
+      <div class= 'new_site'>
+        <%= link_to '新規現場登録', new_site_path %>
+      </div>
+
+      <div class='site_lists'>
+        <div class='list_titles'>
+          <div class= site_id>
+            <h6>ID</h6>
+          </div>
+          <div class='site_title'>
+            <h6>現場名</h6>
+          </div>
+          <div class='site_title'>
+            <h6>顧客名</h6>
+          </div>
+          <div class='site_title'>
+            <h6>編集</h6>
           </div>
         </div>
+        <% @sites.each do |site| %>
+          <div class='site_list'>
+            <div class='site_id'>
+              <%= site.id %>
+            </div>
+            <div class='site_title'>
+              <%= link_to site.name, site_path(site.id) %>
+            </div>
+            <div class='site_title'>
+              <%= site.customer%>
+            </div>
+            <div class='site_title'>
+              <div class='site_edit'>
+                <%= link_to "編集", edit_site_path(site.id) %>
+                <%= link_to "削除", site_path(site.id), method: :delete%>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+
+    <div class='site_right'>
+      <div class= 'new_message'>
+        New Message
+      </div>
+      <div class='new_message_lists'>
+        <div class='list_titles'>
+          <div class= site_id>
+            <h6>ID</h6>
+          </div>
+          <div class='site_title'>
+            <h6>現場名</h6>
+          </div>
+          <div class='site_title'>
+            <h6>業務名</h6>
+          </div>
+          <div class='site_title'>
+            <h6>コメント主</h6>
+          </div>
+        </div>
+        <% @businesses.each do |business| %>
+          <div class='site_message_list'>
+            <div class='site_id'>
+              <%= business.site_id %>
+            </div>
+            <div class='site_title'>
+              <%= business.site.name %>
+            </div>
+            <% if business.business_content_id == 1%>
+              <div class='site_title'>
+                <%= link_to business.survey.name, edit_site_business_path(business.site_id,business.id) %>
+              </div>
+            <% else %>
+              <div class='site_title'>
+                <%= link_to business.development.name, edit_site_business_path(business.site_id,business.id) %>
+              </div>
+            <%end%>
+            <div class='site_title'>
+              <%= business.comments.first.user.name%>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class= 'schedule_title'>
+        今日の予定
+      </div>
+      <div class='today_schedules'>
+        <% @events.each do |event| %>
+          <% if event.start_day  == Date.today%>
+            <div class='today_list'>
+                <% if event.end_day.present? %>
+                  <%= '~' + event.end_day.strftime("%Y/%m/%dまでに")%>
+                <% end %>
+                <%=link_to event.title ,edit_event_path(event.id) %>
+                <%= event.business.site.name %>
+                <%= event.business.business_content.name%>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

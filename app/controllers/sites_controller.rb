@@ -1,7 +1,9 @@
 class SitesController < ApplicationController
   before_action :set_site, only: [:edit, :update, :show, :destroy]
   def index
-    @sites = Site.all
+    @sites = Site.all.order(created_at: :asc)
+    @businesses = current_user.businesses.joins(:comments).includes(:comments).order("comments.created_at desc").limit(10)
+    @events = current_user.events.includes(:business)
   end
   
   def new

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :sites do
    resources :markers, only: [:create,:edit, :update, :destroy]
    resources :neighbors, except: [:index, :show]
-   resources :businesses, except: [:index, :chow] do
+   resources :businesses, except: [:index, :show] do
     resources :comments, only: :create
    end
   end

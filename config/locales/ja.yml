@@ -27,3 +27,16 @@ ja:
         status_id: 状況
         status: 状況
         memo: メモ
+      business:
+        business_content_id: 業務内容
+        survey_id: 種類
+        development_id: 種類
+        order_day: 受注日
+        delivery_day: 納品日
+        survey_day: 測量日
+        user_id: 担当
+      event:
+        title: 内容
+        start_day: 開始日
+        end_day: 終了日
+        memo: メモ

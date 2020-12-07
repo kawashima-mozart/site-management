@@ -55,6 +55,12 @@ header {
 }
 
 /* site_index */
+
+.site_content{
+  display: flex;
+  justify-content: space-between;
+}
+
 .new_site{
   width: 130px;
   height: 25px;
@@ -64,7 +70,6 @@ header {
   border: 1px solid black;
   background-color: lightgray;
 }
-
 .new_site a{
   text-decoration: none;
   color: black;
@@ -72,7 +77,7 @@ header {
 
 
 .site_lists{
-  height: 60vh;
+  height: 80vh;
   width: 42vw;
   overflow: scroll;
   background-color: white;
@@ -80,13 +85,14 @@ header {
   border: 2px solid black;
 }
 
-.list_title{
+.list_titles{
   display: flex;
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid black;
   padding: 5px 0;
 }
+
 
 .site_list{
   border-bottom: 1px solid black;
@@ -95,8 +101,13 @@ header {
   align-items: center;
 }
 
+.site_id{
+width: 50px;
+text-align: center;
+}
+
 .site_title{
-  width: 14vw;
+  width: 150px;
   text-align: center;
 }
 
@@ -111,6 +122,51 @@ header {
   border: 1px solid black;
   background-color: lightgray;
 }
+
+.new_message{
+  width: 130px;
+  height: 25px;
+  margin:20px 0;
+  color: black;
+  text-align: center;
+}
+
+.new_message_lists{
+  height: 40vh;
+  width: 42vw;
+  overflow: scroll;
+  background-color: white;
+  margin-bottom: 10px;
+  border: 2px solid black;
+}
+
+.site_message_list{
+  border-bottom: 1px solid black;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.today_schedules{
+  height: 35vh;
+  width: 42vw;
+  overflow: scroll;
+  background-color: white;
+  margin-bottom: 20px;
+  border: 2px solid black;
+}
+
+.schedule_title{
+  margin: 10px 0 5px;
+}
+
+.today_list{
+  border-bottom: 1px solid black;
+  height: 35px;
+  text-align: center;
+  padding-top: 5px;
+}
+
 
 /* users_index */
 .users_btn{

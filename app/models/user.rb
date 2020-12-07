@@ -12,4 +12,12 @@ class User < ApplicationRecord
   has_many :comments
   has_many :events
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.name = "ゲスト"
+    end
+  end
+
 end

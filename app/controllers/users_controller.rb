@@ -14,4 +14,7 @@ class UsersController < ApplicationController
       format.json {render :json => @events}
     end
   end
+
+  
+
 end

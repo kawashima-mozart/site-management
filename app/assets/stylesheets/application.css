@@ -426,3 +426,12 @@ margin-bottom: 20px;
   height: 500px;
   margin-right: 100px;
 }
+
+/* sign_in */
+.sign_in{
+display: flex;
+}
+
+.sign_in_right{
+  margin-left: 50px;
+}

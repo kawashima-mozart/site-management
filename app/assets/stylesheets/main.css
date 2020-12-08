@@ -659,3 +659,8 @@ A HORIZONTAL event
   right: -4px;
   right: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
 }
+
+
+.fc-event-time {
+  display: none;
+ }

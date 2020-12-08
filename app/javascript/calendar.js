@@ -28,7 +28,7 @@ if(location.pathname.match("^/users$")){
           resourceEditable: true,
           navLinks: true,
           selectable: true,
-          editable:  true,
+          editable:  true
         }
       ],
 

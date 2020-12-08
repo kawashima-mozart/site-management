@@ -9,7 +9,6 @@ require("@rails/activestorage").start()
 require("channels")
 require("../calendar")
 //= require jquery
-//= require jquery_ujs
 //= require fullcalendar
 
 

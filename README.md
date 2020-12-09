@@ -1,149 +1,47 @@
-# README
+## アプリ名
+　site_management
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+  測量業者、特に土地の境界確定業務を行っている会社において
+  担当者の現場情報を一元で管理できるようにします
+  1　現場ごとの業務履歴の管理、参照
+  2　隣接地所有情報の管理
+  3　境界標の情報管理
+  4　業務における経緯の記録
+  5　上長との情報共有
+  が可能となります。
 
-Things you may want to cover:
+## URL
 
-* Ruby version
+## 利用方法
+  現場の作成
+  業務の作成
+  隣接地情報の作成
+  境界標の状況を登録
+  スケジュール作成
+  これまでの経緯の確認。
 
-* System dependencies
+## 目指した課題解決
 
-* Configuration
+  前職の測量会社での情報共有に対して感じた不便を解消しようと思いました
+  現場情報の管理方法が統一されておらず
+  写真の保存先、隣接地所有者情報等、担当各々の記憶や記録に依存しており
+  ・アシスタント等への仕事依頼時に都度、保存先等の指示をしなくてはいけない
+  ・保存先の確認の電話が何度も来る
+  ・課内の打合せのたびに、経緯等を一から説明しなくてはいけない
+  ・退職時引き継ぎに時間がかかる
+  ・退職後も確認の電話が何度も来る
 
-* データベース設計
-
-  ## Usersテーブル
-
-  | Column             | Type   | Options                   |
-  | ------------------ | ------ | ------------------------- |
-  | name               | string | null: false               |
-  | email              | string | null: false ,unique: true |
-  | encrypted_password | string | null: false               |
-
-  ### association
-    has_many comments
-    has_many user_business
-    has_many user_schedules
-
-  ## Commentsテーブル
-  | Column   | Type       | Options                        |
-  | -------- | ---------- | ------------------------------ |
-  | message  | text       | null: false                    |
-  | user     | references | null: false, foreign_key: true |
-  | business | references | null: false, foreign_key: true |
-
-  ### association
-    belongs_to user
-    belongs_to business
-
-  ## Sitesテーブル
-  | Column   | Type   | Options     |
-  | -------- | ------ | ----------- |
-  | name     | string | null: false |
-  | customer | string | null: false |
-
-  ### association
-    has_many businesses
-    has_many markers
-    has_many neighbors
-
-  ## Markersテーブル
-
-  | Column   | Type       | Options                        |
-  | -------- | ---------- | ------------------------------ |
-  | name     | string     | null: false                    |
-  | name_cad | string     | null: false                    |
-  | type_id  | integer    |                                |
-  | exist_id | integer    |                                |
-  | site     | references | null: false, foreign_key: true |
-
-  ### associate
-    belongs_to site
-
-  ## Neighborsテーブル
-
-  | Column       | Type       | Options                        |
-  | ------------ | ---------- | ------------------------------ |
-  | lot_number   | string     | null: false                    |
-  | name         | string     | null: false                    |
-  | address      | string     | null: false                    |
-  | address_now  | string     |                                |
-  | phone_number | string     |                                |
-  | witness      | boolean    |                                |
-  | witness_day  | date       |                                |
-  | imprint      | boolean    |                                |
-  | imprint_day  | date       |                                |
-  | status_id    | integer    |                                |
-  | memo         | text       |                                |
-  | site         | references | null: false, foreign_key: true |
-
-  ### associate
-    belongs_to site
-
-  ## businessesテーブル
-
-  | Column              | Type       | Options                        |
-  | ------------------- | ---------- | ------------------------------ |
-  | business_content_id | integer    | null: false                    |
-  | start               | date       | null: false                    |
-  | end                 | boolean    |                                |
-  | person              | references | null: false, foreign_key: true |
-  | site                | references | null: false, foreign_key: true |
+  このアプリにより
+  すべてを一元で管理することができ、無駄な確認や資料を探す時間を省略することができます。
 
 
-  ### associate
-    belongs_to site
-    has_many user_businesses
-    has_many schedules
+## 実装予定の機能
+  役所調査等の写真以外の資料の保存機能
+  業務の測量日よってその後のスケジュールを作成する機能
 
-  ## user_businessesテーブル
+## ER図
 
-  | Column   | Type       | Options                        |
-  | -------- | ---------- | ------------------------------ |
-  | person   | references | null: false, foreign_key: true |
-  | business | references | null: false, foreign_key: true |
+/Users/yoshikawataiki/projects/site-management/ER.png
+  
 
-
-  ### associate
-    belongs_to person
-    belongs_to business
-
-
-  ## schedulesテーブル
-
-  | Column | Type       | Options                        |
-  | ------ | ---------- | ------------------------------ |
-  | name   | string     | null: false                    |
-  | start  | date       | null: false                    |
-  | end    | date       | null: false                    |
-  | person | references | null: false, foreign_key: true |
-  | site   | references | null: false, foreign_key: true |
-
-
-  ### associate
-    belongs_to business
-    has_many user_schedules
-
-    ## user_schedulesテーブル
-
-  | Column     | Type       | Options                        |
-  | ---------- | ---------- | ------------------------------ |
-  | user       | references | null: false, foreign_key: true |
-  | schedule   | references | null: false, foreign_key: true |
-
-
-  ### associate
-    belongs_to schedule
-    belongs_to user
-
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

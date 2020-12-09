@@ -111,4 +111,4 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 end
 
-server '用意したElastic IP', user: 'ec2-user', roles: %w{app db web}
+server '54.65.222.164', user: 'ec2-user', roles: %w{app db web}

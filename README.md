@@ -12,6 +12,10 @@
   が可能となります。
 
 ## URL
+ http://54.65.222.164/
+
+## 要件定義
+  https://docs.google.com/spreadsheets/d/1DA1i24mYrtmclWnqHEspfIRCLBGPqJFjMgy-0u6zUMg/edit?usp=sharing
 
 ## 利用方法
   現場の作成
@@ -39,7 +43,7 @@
 ## 実装予定の機能
   役所調査等の写真以外の資料の保存機能
   業務の測量日よってその後のスケジュールを作成する機能
-
+  担当者名、現場名での検索機能
 ## ER図
 
 /Users/yoshikawataiki/projects/site-management/ER.png

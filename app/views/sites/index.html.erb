@@ -105,7 +105,6 @@
               <%= '~' + event.end_day.strftime("%Y/%m/%dまでに")%>
               <%=link_to event.title ,edit_event_path(event.id) %>
               <%= event.business.site.name %>
-              <%= event.business.business_content.name%>
             </div>
           <% end %>
         <% end %>

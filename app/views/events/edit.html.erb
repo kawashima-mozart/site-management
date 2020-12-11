@@ -10,7 +10,6 @@
 
       <div class="field">
         <select name= "business_id">
-          <option value="">現場を選択してください</option>
           <% Business.all.each do |business| %>
             <%if business.user_id == current_user.id%>
               <% if business.business_content_id == 1%>

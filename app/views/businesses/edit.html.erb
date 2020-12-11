@@ -50,7 +50,6 @@
           <div class="field">
             <%= f.label :user_id %><br />
               <select name= "user_id">
-                <option value="">担当を選択してください</option>
                 <% User.all.each do |user| %>
                   <option value=<%= user.id %>><%= user.name %></option>
                 <% end %>

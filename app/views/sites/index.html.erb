@@ -91,7 +91,7 @@
       </div>
       <div class='today_schedules'>
         <% @events.each do |event| %>
-          <% if event.start_day  == Date.today%>
+          <% if (event.start_day  == Date.today)  %>
             <div class='today_list'>
                 <% if event.end_day.present? %>
                   <%= '~' + event.end_day.strftime("%Y/%m/%dまでに")%>
@@ -99,6 +99,13 @@
                 <%=link_to event.title ,edit_event_path(event.id) %>
                 <%= event.business.site.name %>
                 <%= event.business.business_content.name%>
+            </div>
+          <% elsif event.end_day.present? && event.end_day > Date.today%>
+            <div class='today_list'>
+              <%= '~' + event.end_day.strftime("%Y/%m/%dまでに")%>
+              <%=link_to event.title ,edit_event_path(event.id) %>
+              <%= event.business.site.name %>
+              <%= event.business.business_content.name%>
             </div>
           <% end %>
         <% end %>

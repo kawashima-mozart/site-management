@@ -99,6 +99,7 @@ header {
   height: 50px;
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 
 .site_id{
@@ -107,7 +108,7 @@ text-align: center;
 }
 
 .site_title{
-  width: 150px;
+  width: 140px;
   text-align: center;
 }
 
@@ -343,12 +344,12 @@ width: 100px;
 }
 
 .neighbor_lot_number{
-  width: 120px;
+  width: 200px;
   margin-left: 10px;
 }
 
 .neighbor_name{
-  width: 150px;
+  width: 200px;
 }
 
 .neighbor_name a{

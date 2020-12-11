@@ -79,7 +79,7 @@
           <div class='comment'>
             <% @comments.each do |comment| %>
               <p>
-                <%= comment.user.name %>:
+                <%= comment.user.name %>  :
                 <%= comment.text %>
               </p>
             <% end %>
@@ -94,10 +94,10 @@
           <% @events.each do |event| %>
             <p>
               <%=link_to event.start_day.strftime("%Y年%m月%d日"),edit_event_path(event.id) %>
-              <% if event.end_day%>
-              <%'~' + event.start_day.strftime("%Y年%m月%d日")%>
+              <% if event.end_day.present?%>
+              <%='~' + event.end_day.strftime("%Y年%m月%d日")%>
               <% end %>
-              <%=event.business.site.name + event.business.business_content.name + event.title %>
+              <%= event.title %>
             </p>
           <% end %>
         <% end %>

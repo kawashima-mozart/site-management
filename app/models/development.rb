@@ -1,5 +1,5 @@
 class Development < ActiveHash::Base
-  self.data =[
+  self.data = [
     { id: 0, name: '--' },
     { id: 1, name: '開発申請' },
     { id: 2, name: '道路位置指定' },

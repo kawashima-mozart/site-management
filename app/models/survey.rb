@@ -13,7 +13,6 @@ class Survey < ActiveHash::Base
     { id: 10, name: '基準法43条業務' },
     { id: 11, name: 'その他' }
   ]
-    include ActiveHash::Associations
-    has_many :businesses
-
+  include ActiveHash::Associations
+  has_many :businesses
 end

@@ -23,7 +23,6 @@ class NeighborsController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def destroy
@@ -34,7 +33,7 @@ class NeighborsController < ApplicationController
   private
 
   def neighbor_params
-    params.require(:neighbor).permit(:lot_number, :name, :address, :address_now, :phone_number,:witness, :witness_day, :imprint, :imprint_day, :status_id, :memo).merge(site_id: params[:site_id]) 
+    params.require(:neighbor).permit(:lot_number, :name, :address, :address_now, :phone_number, :witness, :witness_day, :imprint, :imprint_day, :status_id, :memo).merge(site_id: params[:site_id])
   end
 
   def seach_neighbor

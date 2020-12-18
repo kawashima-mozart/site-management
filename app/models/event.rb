@@ -5,16 +5,14 @@ class Event < ApplicationRecord
   with_options presence: true do
     validates :title
     validates :start_day
-  end 
+  end
   validate :end_day_check
-  
+
   private
 
   def end_day_check
-    if end_day !=  nil
-      if end_day < start_day
-        errors.add(:end_day, 'は予定日以降のものを選択してください')
-      end
+    unless end_day.nil?
+      errors.add(:end_day, 'は予定日以降のものを選択してください') if end_day < start_day
     end
   end
 end

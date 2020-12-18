@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-  before_action :set_business, only: [:edit, :update, :destroy] 
+  before_action :set_business, only: [:edit, :update, :destroy]
 
   def new
     @business = Business.new
@@ -43,5 +43,4 @@ class BusinessesController < ApplicationController
   def set_business
     @business = Business.find(params[:id])
   end
-
 end

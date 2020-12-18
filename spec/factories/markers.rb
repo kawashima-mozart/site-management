@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :marker do
-    name {'10'}
-    name_cad { '10'}
+    name { '10' }
+    name_cad { '10' }
     exist_id { 1 }
     type_id { 1 }
     association :site

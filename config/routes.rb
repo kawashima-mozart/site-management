@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :users, only: :index
   resources :events, except: :index
   resources :sites do
+    collection do
+      get 'search'
+    end
    resources :markers, only: [:create,:edit, :update, :destroy]
    resources :neighbors, except: [:index, :show]
    resources :businesses, except: [:index, :show] do
@@ -18,4 +21,6 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
+  get 'businesses/search' 
+ 
 end

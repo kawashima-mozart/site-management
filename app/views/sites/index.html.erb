@@ -111,4 +111,16 @@
       </div>
     </div>
   </div>
+    <p>担当検索</p>
+    <%= search_form_for(@q, url: businesses_search_path) do |f| %>
+      <%= f.collection_select :user_id_eq, @users,:id, :name,  include_blank:  "--" %>
+      <%= f.submit "検索" %>
+    <% end %>
+
+    <p>現場名検索</p>
+    <%= form_with(url: search_sites_path, local: true, method: :get) do |f|%>
+      <%= f.text_field :keyword, placeholder: "現場名を入れてください" %>
+      <%= f.submit "検索" %>
+    <% end %>
+
 </div>

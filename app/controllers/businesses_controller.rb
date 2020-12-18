@@ -16,7 +16,7 @@ class BusinessesController < ApplicationController
 
   def edit
     @comment = Comment.new
-    @comments = @business.comments.order(created_at: :desc)
+    @comments = @business.comments.includes(:user).order(created_at: :desc)
     @events = @business.events.order(created_at: :asc)
     @event = Event.new
   end
@@ -34,6 +34,11 @@ class BusinessesController < ApplicationController
     redirect_to site_path(params[:site_id]), notice: '業務が削除されました'
   end
 
+  def search
+    @q = Business.search(search_params)
+    @results = @q.result.includes(:user, :site)
+  end
+
   private
 
   def business_params
@@ -42,6 +47,10 @@ class BusinessesController < ApplicationController
 
   def set_business
     @business = Business.find(params[:id])
+  end
+
+  def search_params
+    params.require(:q).permit(:user_id_eq,:site_name_cont)
   end
 
 end

@@ -2,8 +2,8 @@ class SitesController < ApplicationController
   before_action :set_site, only: [:edit, :update, :show, :destroy]
   def index
     @sites = Site.all.order(created_at: :asc)
-    @businesses = current_user.businesses.joins(:comments).includes(:comments).order("comments.created_at desc").limit(10)
-    @events = current_user.events.includes(:business)
+    @businesses = current_user.businesses.joins(:comments).includes(:site, comments: [:user]).order("comments.created_at desc")
+    @events = current_user.events.includes(business: [:site])
     @q = Business.ransack(params[:q])
     @serch_businesses = Business.all.includes(:site)
     @users = User.all
@@ -35,7 +35,7 @@ class SitesController < ApplicationController
 
   def show
     @marker = Marker.new
-    @markers = @site.markers.includes([:images_attachments]).order(created_at: :asc)
+    @markers = @site.markers.includes([:images_attachments]).order(created_at: :desc)
     @neighbors = @site.neighbors.order(created_at: :asc)
     @businesses = @site.businesses.includes(:user).order(created_at: :asc)
   end

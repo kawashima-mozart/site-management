@@ -10,7 +10,6 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to users_path
     else
-      flash.now[:alert] = 'スケジュールが保存されませんでした'
       render :new
     end
   end

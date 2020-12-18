@@ -1,0 +1,72 @@
+<div class='content'>
+  <div class='search_lists'>
+    <div class='list_titles'>
+      <div class= site_id>
+        <h6>ID</h6>
+      </div>
+      <div class='search_title'>
+        <h6>現場名</h6>
+      </div>
+      <div class='search_title'>
+        <h6>顧客名</h6>
+      </div>
+      <div class='search_content'>
+        <h6>業務内容</h6>
+      </div>
+      <div class='search_person'>
+        <h6>担当</h6>
+      </div>
+      <div class='search_comment'>
+        <h6>コメント</h6>
+      </div>
+    </div>
+    <% @results.each do |result| %>
+      <div class='search_list'>
+        <%if result.businesses.present?%>
+          <% result.businesses.each do |business|%>
+            <div class='search_business_lists'>
+              <div class='search_business_list'>
+                <div class='site_id'>
+                  <%= business.site.id %>
+                </div>
+                <div class='search_title'>
+                  <%= link_to business.site.name, site_path(result.id) %>
+                </div>
+                <div class='search_title'>
+                  <%= business.site.customer%>
+                </div>
+                <div class='search_content'>
+                  <% if business.business_content_id == 1 %>
+                    <%= link_to business.survey.name, edit_site_business_path(business.site_id,business.id) %>
+                  <% else %>
+                    <%= link_to business.development.name, edit_site_business_path(business.site_id,business.id)%>
+                  <% end %>
+                </div>
+                <div class='search_person'>
+                  <%= business.user.name%>
+                </div>
+                <%if business.comments.present? %>
+                  <div class='search_comment'>
+                    <%= "#{business.comments.first.user.name} : #{business.comments.first.text}" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class='search_business_list'>
+            <div class='site_id'>
+              <%= result.id %>
+            </div>
+            <div class='search_title'>
+              <%= link_to result.name, site_path(result.id) %>
+            </div>
+            <div class='search_title'>
+              <%= result.customer%>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

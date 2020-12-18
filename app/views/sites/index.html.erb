@@ -63,26 +63,28 @@
           </div>
         </div>
         <% @businesses.each do |business| %>
-          <div class='site_message_list'>
-            <div class='site_id'>
-              <%= business.site_id %>
-            </div>
-            <div class='site_title'>
-              <%= business.site.name %>
-            </div>
-            <% if business.business_content_id == 1%>
-              <div class='site_title'>
-                <%= link_to business.survey.name, edit_site_business_path(business.site_id,business.id) %>
+          <% if business.comments.present?%>
+            <div class='site_message_list'>
+              <div class='site_id'>
+                <%= business.site_id %>
               </div>
-            <% else %>
               <div class='site_title'>
-                <%= link_to business.development.name, edit_site_business_path(business.site_id,business.id) %>
+                <%= business.site.name %>
               </div>
-            <%end%>
-            <div class='site_title'>
-              <%= business.comments.first.user.name%>
+              <% if business.business_content_id == 1%>
+                <div class='site_title'>
+                  <%= link_to business.survey.name, edit_site_business_path(business.site_id,business.id) %>
+                </div>
+              <% else %>
+                <div class='site_title'>
+                  <%= link_to business.development.name, edit_site_business_path(business.site_id,business.id) %>
+                </div>
+              <%end%>
+              <div class='site_title'>
+                <%= business.comments.first.user.name%>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
 

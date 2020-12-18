@@ -4,8 +4,7 @@ class SitesController < ApplicationController
     @sites = Site.all.order(created_at: :asc)
     @businesses = current_user.businesses.includes(:site, comments: [:user]).order("comments.created_at desc")
     @events = current_user.events.includes(business: [:site])
-    @q = Business.ransack(params[:q])
-    @serch_businesses = Business.all.includes(:site)
+    @q = Site.includes(businesses:[:user]).ransack(params[:q])
     @users = User.all
   end
   
@@ -46,8 +45,10 @@ class SitesController < ApplicationController
   end
 
   def search
-    @sites = Site.search(params[:keyword])
+    @q = Site.search(search_params)
+    @results = @q.result.includes(businesses:[:user,comments:[:user]]).order(created_at: :desc)
   end
+
 
   private
   
@@ -58,4 +59,9 @@ class SitesController < ApplicationController
   def set_site
     @site = Site.find(params[:id])
   end
+
+  def search_params
+    params.require(:q).permit(:businesses_user_id_eq,:name_cont)
+  end
+
 end

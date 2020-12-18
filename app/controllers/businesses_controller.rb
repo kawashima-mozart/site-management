@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-  before_action :set_business, only: [:edit, :update, :destroy] 
+  before_action :set_business, only: [:edit, :update, :destroy]
 
   def new
     @business = Business.new
@@ -16,7 +16,7 @@ class BusinessesController < ApplicationController
 
   def edit
     @comment = Comment.new
-    @comments = @business.comments.order(created_at: :desc)
+    @comments = @business.comments.includes(:user).order(created_at: :desc)
     @events = @business.events.order(created_at: :asc)
     @event = Event.new
   end
@@ -43,5 +43,4 @@ class BusinessesController < ApplicationController
   def set_business
     @business = Business.find(params[:id])
   end
-
 end

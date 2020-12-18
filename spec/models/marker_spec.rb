@@ -24,17 +24,17 @@ RSpec.describe Marker, type: :model do
       it '点番が空欄のとき' do
         @marker.name = nil
         @marker.valid?
-        expect(@marker.errors.full_messages).to include('点番を入力してください')      
+        expect(@marker.errors.full_messages).to include('点番を入力してください')
       end
       it '点番（CAD）が空欄のとき' do
         @marker.name_cad = nil
         @marker.valid?
-        expect(@marker.errors.full_messages).to include('点番（CAD)を入力してください')      
+        expect(@marker.errors.full_messages).to include('点番（CAD)を入力してください')
       end
       it '境界種類が０のとき' do
         @marker.type_id = 0
         @marker.valid?
-        expect(@marker.errors.full_messages).to include('境界種類を選択してください')      
+        expect(@marker.errors.full_messages).to include('境界種類を選択してください')
       end
     end
   end

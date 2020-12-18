@@ -9,7 +9,6 @@ class Business < ApplicationRecord
   belongs_to :survey
   belongs_to :development
 
-  
   with_options presence: true do
     validates :business_content_id, numericality: { other_than: 0, message: 'を選択してください' }
     validates :survey_id, numericality: { other_than: 0, message: 'を選択してください' }, if:  :content_s
@@ -25,5 +24,4 @@ class Business < ApplicationRecord
   def content_d
     business_content_id == 2
   end
-
 end

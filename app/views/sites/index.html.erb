@@ -2,8 +2,17 @@
   <div class='site_content'>
 
     <div class='site_left'>
-      <div class= 'new_site'>
-        <%= link_to '新規現場登録', new_site_path %>
+      <div class='site_left_head'>
+        <div class= 'new_site'>
+          <%= link_to '新規現場登録', new_site_path %>
+        </div>
+        <div class='search_form'>
+          <%= search_form_for(@q, url: search_sites_path) do |f| %>
+            <%= f.collection_select :businesses_user_id_eq, @users,:id, :name,  include_blank:  "担当" %>
+            <%= f.search_field :name_cont, placeholder: "現場名" %>
+            <%= f.submit "検索" %>
+          <% end %>
+        </div>
       </div>
 
       <div class='site_lists'>
@@ -63,26 +72,28 @@
           </div>
         </div>
         <% @businesses.each do |business| %>
-          <div class='site_message_list'>
-            <div class='site_id'>
-              <%= business.site_id %>
-            </div>
-            <div class='site_title'>
-              <%= business.site.name %>
-            </div>
-            <% if business.business_content_id == 1%>
-              <div class='site_title'>
-                <%= link_to business.survey.name, edit_site_business_path(business.site_id,business.id) %>
+          <% if business.comments.present?%>
+            <div class='site_message_list'>
+              <div class='site_id'>
+                <%= business.site_id %>
               </div>
-            <% else %>
               <div class='site_title'>
-                <%= link_to business.development.name, edit_site_business_path(business.site_id,business.id) %>
+                <%= business.site.name %>
               </div>
-            <%end%>
-            <div class='site_title'>
-              <%= business.comments.first.user.name%>
+              <% if business.business_content_id == 1%>
+                <div class='site_title'>
+                  <%= link_to business.survey.name, edit_site_business_path(business.site_id,business.id) %>
+                </div>
+              <% else %>
+                <div class='site_title'>
+                  <%= link_to business.development.name, edit_site_business_path(business.site_id,business.id) %>
+                </div>
+              <%end%>
+              <div class='site_title'>
+                <%= business.comments.first.user.name%>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
 

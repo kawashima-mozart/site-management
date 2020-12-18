@@ -61,8 +61,13 @@ header {
   justify-content: space-between;
 }
 
+.site_left_head{
+  display: flex;
+  justify-content: space-between;
+}
+
 .new_site{
-  width: 130px;
+  width: 140px;
   height: 25px;
   margin:20px 0;
   color: black;
@@ -73,6 +78,10 @@ header {
 .new_site a{
   text-decoration: none;
   color: black;
+}
+
+.search_form{
+  margin: 20px ;
 }
 
 
@@ -87,7 +96,6 @@ header {
 
 .list_titles{
   display: flex;
-  justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid black;
   padding: 5px 0;
@@ -99,7 +107,6 @@ header {
   height: 50px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
 }
 
 .site_id{
@@ -436,4 +443,36 @@ display: flex;
 
 .sign_in_right{
   margin-left: 50px;
+}
+
+/* site_search */
+
+.search_lists{
+  width: 1100px;
+  background-color: white;
+  margin-bottom: 20px;
+  height: 500px;
+  overflow: scroll;
+  border: 1px solid black;
+}
+
+.search_business_list{
+  display: flex;
+  height: 40px;
+  border-bottom: 1px solid black;
+  align-items: center;
+}
+
+.search_title{
+  width: 210px;
+}
+
+.search_content{
+  width: 160px;
+}
+.search_person{
+  width: 80px;
+}
+.search_comment{
+  width: 390px;
 }

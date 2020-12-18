@@ -16,12 +16,12 @@ RSpec.describe Site, type: :model do
       it '所在地番が空欄のとき' do
         @site.name = nil
         @site.valid?
-        expect(@site.errors.full_messages).to include('所在地番を入力してください')      
+        expect(@site.errors.full_messages).to include('所在地番を入力してください')
       end
       it '顧客名が空欄のとき' do
         @site.customer = nil
         @site.valid?
-        expect(@site.errors.full_messages).to include('顧客名を入力してください')      
+        expect(@site.errors.full_messages).to include('顧客名を入力してください')
       end
     end
   end

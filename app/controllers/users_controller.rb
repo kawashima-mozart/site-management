@@ -8,13 +8,10 @@ class UsersController < ApplicationController
       end_day AS end,
       memo AS description"
     ).as_json
-    
+
     respond_to do |format|
       format.html
-      format.json {render :json => @events}
+      format.json { render json: @events }
     end
   end
-
-  
-
 end

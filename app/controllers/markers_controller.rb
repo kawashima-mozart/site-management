@@ -25,7 +25,7 @@ class MarkersController < ApplicationController
   private
 
   def marker_params
-    params.require(:marker).permit(:name, :name_cad, :type_id, :exist_id, images:[]).merge(site_id: params[:site_id])
+    params.require(:marker).permit(:name, :name_cad, :type_id, :exist_id, images: []).merge(site_id: params[:site_id])
   end
 
   def set_marker

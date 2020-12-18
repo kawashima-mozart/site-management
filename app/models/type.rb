@@ -1,5 +1,5 @@
 class Type < ActiveHash::Base
-  self.data =[
+  self.data = [
     { id: 0, name: '--' },
     { id: 1, name: 'コンクリート杭' },
     { id: 2, name: '金属標' },

@@ -47,7 +47,7 @@
                 </div>
                 <%if business.comments.present? %>
                   <div class='search_comment'>
-                    <%= "#{business.comments.first.user.name} : #{business.comments.first.text}" %>
+                    <%= "#{business.comments.last.user.name} : #{business.comments.last.text}" %>
                   </div>
                 <% end %>
               </div>

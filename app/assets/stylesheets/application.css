@@ -18,6 +18,7 @@
   box-sizing: border-box; 
 }
 
+
 /* #header */
 header {
   border-bottom: 3px solid #D8D8D8;
@@ -51,6 +52,7 @@ header {
   background: lightgreen;
   position: absolute;
   width: 100vw;
+  min-width: 1100px;
   padding: 0 50px;
 }
 
@@ -86,8 +88,8 @@ header {
 
 
 .site_lists{
-  height: 80vh;
-  width: 42vw;
+  height: 570px;
+  width: 500px;
   overflow: scroll;
   background-color: white;
   margin-bottom: 30px;
@@ -115,7 +117,7 @@ text-align: center;
 }
 
 .site_title{
-  width: 200px;
+  width: 150px;
   text-align: center;
 }
 
@@ -140,8 +142,8 @@ text-align: center;
 }
 
 .new_message_lists{
-  height: 40vh;
-  width: 42vw;
+  height: 270px;
+  width: 490px;
   overflow: scroll;
   background-color: white;
   margin-bottom: 10px;
@@ -156,8 +158,8 @@ text-align: center;
 }
 
 .today_schedules{
-  height: 35vh;
-  width: 42vw;
+  height: 270px;
+  width: 490px;
   overflow: scroll;
   background-color: white;
   margin-bottom: 20px;

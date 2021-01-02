@@ -482,6 +482,8 @@ display: flex;
   height: 40px;
   border-right: 1px solid black;
   padding: 5px;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .search_id{
